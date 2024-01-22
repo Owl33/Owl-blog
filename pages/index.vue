@@ -1,10 +1,14 @@
 <script setup lang="ts">
-import { useUserStore } from "@/store/useUserStore";
+import { useRouter } from "vue-router";
+const router = useRouter();
 
-const userStore = useUserStore();
-console.log(userStore);
+const goToPost = (postId: number) => {
+  router.push({ name: "posts-post_id", params: { post_id: postId } });
+};
 </script>
+
 <template>
-  <nav><NuxtLink to="/login">Go to login</NuxtLink></nav>
-  <div>index</div>
+  <div>
+    <button @click="goToPost(12)">Go to post</button>
+  </div>
 </template>
