@@ -1,12 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import mkcert from "vite-plugin-mkcert";
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: true,
-  vite: {
-    plugins: [mkcert()],
-  },
+
   css: ["~/assets/css/main.css"],
   postcss: {
     plugins: {
@@ -21,9 +18,17 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
   ],
   devServer: {
-    host: {
-      https: false,
-      port: 8080,
+    https: {
+      key: "./cert/owl-key.pem",
+      cert: "./cert/owl.pem",
+    },
+    port: 8080,
+  },
+  vite: {
+    server: {
+      hmr: {
+        protocol: "wss",
+      },
     },
   },
 });
