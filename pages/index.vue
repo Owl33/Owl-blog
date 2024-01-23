@@ -10,7 +10,7 @@ const goToPost = (postId: number) => {
 <template>
   <section>
     <article>
-      <div class="flex justify-between mt-10 items-center">
+      <div class="flex justify-between items-center">
         <div>
           <span>개발 (3)</span>
           <span class="mx-4">일상 (2)</span>
@@ -30,30 +30,17 @@ const goToPost = (postId: number) => {
     </article>
     <article>
       <div
-        class="mt-12 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 lg:gap-24 md:gap-16 sm:gap-8"
+        class="mt-12 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 lg:gap-16 md:gap-8 sm:gap-4"
       >
-        <div v-for="(item, index) in 30">
-          <img
-            class="rounded-md w-100 aspect-square"
-            :src="`https://source.unsplash.com/random/192${index}×1080`"
-          />
-          <div
-            class="mt-4 mb-2 flex items-center justify-between text-sm text-slate-400"
-          >
-            <p class="">개발</p>
-            <p class="">2023-01-23</p>
-          </div>
-
-          <h1 class="mb-4 text-2xl text-slate-700 truncate">
-            [Project] #2 에러를 소통해보자
-          </h1>
-          <p class="line-clamp-4 text-gray-400">
-            규격화된 에러 설계는 왜 필요한가 프로젝트 개발을 진행하면서 가장
-            먼저 구축에 들어갔던 작업이 "에러 공통 응답 객체" 설계였다. 여태껏
-            클라이언트와의 소통 없이 오로지 백엔드의 입장에서만 코드를
-            작성해왔던 나에게 에러를 던진다는 것은 그다지 큰 의미가 없었다.
-          </p>
-        </div>
+        <Cards
+          v-for="(item, index) in 30"
+          :image="`https://source.unsplash.com/random/192${index}×1080`"
+          :category="'개발'"
+          :date="'2022-01-23'"
+          :title="'[Project] #2 에러를 소통해보자'"
+          :contents="'규격화된 에러 설계는 왜 필요한가 프로젝트 개발을 진행하면서 가장 먼저 구축에 들어갔던 작업이 에러 공통 응답 객체 설계였다. 여태껏 클라이언트와의 소통 없이 오로지 백엔드의 입장에서만 코드를 작성해왔던 나에게 에러를 던진다는 것은 그다지 큰 의미가 없었다.'"
+          @onClickEvent="goToPost(index)"
+        ></Cards>
       </div>
     </article>
   </section>
