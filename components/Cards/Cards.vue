@@ -9,7 +9,7 @@ const { category, title, date, contents } = defineProps<{
   contents: string;
 }>();
 const emits = defineEmits<{
-  onClickEvent: void;
+  onClickEvent: any;
 }>();
 </script>
 
@@ -33,7 +33,7 @@ const emits = defineEmits<{
         <p class="">{{ date }}</p>
       </div>
 
-      <h1 class="my-4 text-2xl text-slate-700 truncate">
+      <h1 class="my-3 text-2xl text-slate-700 truncate">
         {{ title }}
       </h1>
       <p class="line-clamp-3 leading-6 text-sm text-gray-400">
