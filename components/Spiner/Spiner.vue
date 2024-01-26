@@ -1,5 +1,6 @@
 <script setup lang="ts">
-const { data, pending, error, refresh } = await useApi("/todos/1");
+const { data, pending, error, refresh } = await useApi("get", "/posts");
+
 </script>
 <template>
   <div>
@@ -7,7 +8,7 @@ const { data, pending, error, refresh } = await useApi("/todos/1");
     <div v-if="pending">Loading..</div>
     <template v-else>
       <div v-if="error">Sorry, error occured.</div>
-      <div v-else>{{ data }}</div>
+      <!-- <div v-else>{{ data }}</div> -->
     </template>
 
     <button @click="refresh()">Refresh</button>

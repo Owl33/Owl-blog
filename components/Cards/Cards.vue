@@ -16,7 +16,7 @@ const emits = defineEmits<{
 <template>
   <div
     style="background-color: white"
-    class="shadow-lg rounded-xl"
+    class="shadow rounded-xl"
     @click.prevent="emits('onClickEvent')"
   >
     <NuxtImg

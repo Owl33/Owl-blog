@@ -1,0 +1,66 @@
+<script setup lang="ts">
+import { nodeViewProps, NodeViewWrapper } from "@tiptap/vue-3";
+import { Editor, Node } from "@tiptap/vue-3";
+import { Node as ProseMirrorNode } from "prosemirror-model";
+import { Decoration } from "prosemirror-view";
+
+interface Props {
+  editor: Editor;
+  node: ProseMirrorNode;
+  decorations: Decoration;
+  selected: boolean;
+  extension: Node<any, any>;
+  getPos: () => number;
+  updateAttributes: (attributes: Record<string, any>) => void;
+  deleteNode: () => void;
+}
+
+const props = defineProps<Props>();
+
+const test = () => {
+  props.updateAttributes({
+    count: props.node.attrs.count + 1,
+  });
+};
+</script>
+
+<template>
+  <node-view-wrapper class="vue-component">
+    <span class="label">Vue Component</span>
+
+    <div class="content" draggable="true" data-drag-handle>
+      <button @click="test()">
+        This button has been clicked {{ node.attrs.count }} times.
+      </button>
+    </div>
+  </node-view-wrapper>
+</template>
+
+<style lang="scss">
+.vue-component {
+  background: #faf594;
+  border: 3px solid #0d0d0d;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  position: relative;
+}
+
+.label {
+  margin-left: 1rem;
+  background-color: #0d0d0d;
+  font-size: 0.6rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.content {
+  margin-top: 1.5rem;
+  padding: 1rem;
+}
+</style>

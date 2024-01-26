@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 const router = useRouter();
+const { data, pending, error, refresh } = await useApi("get", "/posts");
 
 const goToPost = (postId: number) => {
   router.push({ name: "posts-post_id", params: { post_id: postId } });
 };
+console.log(data);
 </script>
 
 <template>
@@ -32,13 +34,17 @@ const goToPost = (postId: number) => {
       <div
         class="mt-12 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 lg:gap-16 md:gap-8 sm:gap-4"
       >
+        <!-- <Spiner
+      
+        ></Spiner> -->
+
         <Cards
-          v-for="(item, index) in 30"
+          v-for="(item, index) in data"
           :image="`https://source.unsplash.com/random/192${index}×1080`"
-          :category="'개발'"
-          :date="'2022-01-23'"
-          :title="'[Project] #2 에러를 소통해보자'"
-          :contents="'규격화된 에러 설계는 왜 필요한가 프로젝트 개발을 진행하면서 가장 먼저 구축에 들어갔던 작업이 에러 공통 응답 객체 설계였다. 여태껏 클라이언트와의 소통 없이 오로지 백엔드의 입장에서만 코드를 작성해왔던 나에게 에러를 던진다는 것은 그다지 큰 의미가 없었다.'"
+          :category="item.category"
+          :date="item.creation_at"
+          :title="item.title"
+          :contents="item.contents"
           @onClickEvent="goToPost(index)"
         ></Cards>
       </div>

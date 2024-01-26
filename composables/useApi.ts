@@ -1,17 +1,30 @@
-export default (url: string) => {
-  return useFetch(url, {
-    baseURL: "https://jsonplaceholder.typicode.com",
-    onRequest: (context) => {
-      const isDev = process.env.NODE_ENV === "development";
-      if (isDev) {
-        // 이 부분은 왜 이렇게밖에 못하는지 모르겠는데, 차후 개선이 되면 좋겠네요.
-        // 참고: https://github.com/nuxt/framework/issues/2557#issuecomment-1003865620
-        context.options.headers = new Headers(context.options.headers);
-        context.options.headers.append("Authrization", "Bearer TOKEN_FOR_DEV");
-        console.log(context.options.headers);
-      }
+export default (method: string, url: string, params?: any) => {
+  const baseURL = "https://back-owlblog.vercel.app";
 
-      return null;
-    },
-  });
+  if (method.toUpperCase() == "GET") {
+    return useAsyncData(`${url}key`, () =>
+      $fetch(baseURL + url, {
+        params,
+        onRequest({ request, response, options }) {},
+        onResponse({ request, response, options }) {
+          // Process the response data
+        },
+      })
+    );
+  } else {
+    return useFetch(url, {
+      method:
+        method.toUpperCase() == "POST"
+          ? "POST"
+          : method.toUpperCase() == "PUT"
+          ? "PUT"
+          : "DELETE",
+      baseURL,
+      body: params,
+      onRequest({ request, response, options }) {},
+      onResponse({ request, response, options }) {
+        // Process the response data
+      },
+    });
+  }
 };
