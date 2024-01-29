@@ -1,12 +1,28 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 const router = useRouter();
-const { data, pending, error, refresh } = await useApi("get", "/posts");
+interface ia {
+  category: string;
+  title: string;
+  contents: string;
+  creation_at: string;
+}
+const config = useRuntimeConfig();
+console.log(config.public.apiBase);
+
+const { data, pending } = useAsyncData<ia[]>(`key`, () =>
+  $fetch(`${config.public.apiBase}/posts`)
+);
+console.log(data.value);
+
+// const { data, pending, error, refresh } = useApi<{ data: ia[] }>(
+//   "get",
+//   "/posts"
+// );
 
 const goToPost = (postId: number) => {
   router.push({ name: "posts-post_id", params: { post_id: postId } });
 };
-console.log(data);
 </script>
 
 <template>
@@ -38,7 +54,9 @@ console.log(data);
       
         ></Spiner> -->
 
+        <div v-if="pending">loading</div>
         <Cards
+          v-if="data && data.length > 0 && !pending"
           v-for="(item, index) in data"
           :image="`https://source.unsplash.com/random/192${index}×1080`"
           :category="item.category"
@@ -47,6 +65,11 @@ console.log(data);
           :contents="item.contents"
           @onClickEvent="goToPost(index)"
         ></Cards>
+        <div v-else>
+          <div class="">
+            <p>게시글이 없습니다.</p>
+          </div>
+        </div>
       </div>
     </article>
   </section>

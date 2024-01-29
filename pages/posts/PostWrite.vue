@@ -2,36 +2,57 @@
 import { ref } from "vue";
 const editorRef = ref();
 const category = ref("개발");
-const postsData = ref({
+const config = useRuntimeConfig();
+console.log(config.public.apiBase);
+const postData = ref<{
+  contents: any;
+  title: string;
+  category: string;
+}>({
   title: "",
   contents: undefined,
   category: "개발",
 });
 
 const writePost = () => {
-  console.log(postsData.value);
-  console.log(editorRef.value.getJSON());
+  console.log(editorRef.value.getJSON().content);
+
+  postData.value.contents = JSON.stringify(editorRef.value.getJSON().content);
+  const data = $fetch(`https://back-owlblog.vercel.app/posts/write`, {
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    method: "POST",
+    body: { ...postData.value },
+  })
+    .then((res) => console.log(res))
+    .catch((a) => console.log(a));
+
+  console.log(data);
 };
 </script>
 <template>
   <div>
     <div class="flex justify-between">
       <Chips
-        v-model="postsData.category"
+        v-model="postData.category"
         :data="[{ category: '개발' }, { category: '일상' }]"
       >
       </Chips>
 
       <button
         @click.prevnet="writePost"
-        class="border rounded-xl bg-green-500 text-white px-4 py-2"
+        class="border rounded-xl bg-indigo-500 text-white px-5 py-2"
       >
-        작성하기
+        <p>작성하기</p>
       </button>
     </div>
     <div class="my-6">
       <input
-        v-model="postsData.title"
+        v-model="postData.title"
         class="write-title-input text-4xl font-bold w-full h1 py-2 text-gray-700 focus:outline-none focus:shadow-outline"
         id="title"
         autofocus
@@ -40,7 +61,7 @@ const writePost = () => {
       />
     </div>
     <Tiptap
-      :content="postsData?.contents"
+      :content="postData?.contents"
       :resize="true"
       ref="editorRef"
       :editable="true"

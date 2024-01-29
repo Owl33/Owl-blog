@@ -14,7 +14,7 @@ const { data } = defineProps<{
       class="transition ease-in-out delay-100 hover:bg-gray-300 cursor-pointer mr-2 flex justify-center items-center font-medium py-1 rounded-full border"
       :class="
         modelValue == chip.category
-          ? ' hover:bg-green-500 bg-green-500 text-white'
+          ? ' hover:bg-indigo-500 bg-indigo-500 text-white'
           : ''
       "
     >
