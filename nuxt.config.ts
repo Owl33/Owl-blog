@@ -6,11 +6,7 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: "page", mode: "out-in" },
   },
-  runtimeConfig: {
-    public: {
-      apiBase: "https://back-owlblog.vercel.app",
-    },
-  },
+
 
   css: ["~/assets/css/main.css"],
   postcss: {
@@ -19,6 +15,20 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+
+  
+	nitro: {
+		devProxy: {
+			"/api": {
+				target: "https://back-owlblog.vercel.app",
+        prependPath: true,
+
+				changeOrigin: true,
+			},
+  
+    }
+
+	},
   modules: [
     // ...
     "@nuxt/image",
@@ -27,10 +37,9 @@ export default defineNuxtConfig({
   ],
   devServer: {
     https: {
-      key: "./cert/owl-key.pem",
-      cert: "./cert/owl.pem",
+      key: "./cert/key.pem",
+      cert: "./cert/cert.pem",
     },
-    port: 8080,
   },
   vite: {
     server: {

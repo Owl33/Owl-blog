@@ -14,24 +14,26 @@ const postData = ref<{
   category: "개발",
 });
 
-const writePost = () => {
+const writePost = async () => {
   console.log(editorRef.value.getJSON().content);
+  const data = await useApi(`POST`,'/posts/write',
+  {
+    ...postData.value
+    ,contents:JSON.stringify(editorRef.value.getJSON().content)
+  });
+console.log(data)
+	// const result = await $fetch("/api/posts/write", {
+  //     method:'POST',   
+  //     body:{
 
-  postData.value.contents = JSON.stringify(editorRef.value.getJSON().content);
-  const data = $fetch(`https://back-owlblog.vercel.app/posts/write`, {
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
+  //        ...postData.value
+  //        ,contents:JSON.stringify(editorRef.value.getJSON().content)
+  //      }
 
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    method: "POST",
-    body: { ...postData.value },
-  })
-    .then((res) => console.log(res))
-    .catch((a) => console.log(a));
-
-  console.log(data);
+  // });
+	// console.log("result : ", result);
+	// data.value = result;
+  // console.log(data)
 };
 </script>
 <template>
