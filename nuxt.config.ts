@@ -16,19 +16,6 @@ export default defineNuxtConfig({
     },
   },
 
-  
-	nitro: {
-		devProxy: {
-			"/api": {
-				target: "https://back-owlblog.vercel.app",
-        prependPath: true,
-
-				changeOrigin: true,
-			},
-  
-    }
-
-	},
   modules: [
     // ...
     "@nuxt/image",
