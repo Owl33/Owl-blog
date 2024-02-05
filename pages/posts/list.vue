@@ -5,6 +5,7 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 interface res {
   data:{  
+    post_id:number;
     category: string;
     title: string;
     contents: string;
@@ -24,7 +25,8 @@ const test =() =>{
 
 
 
-const goToPost = (postId: number) => {
+const goToPost = (postId: any) => {
+  // console.log(item)
   router.push({ name: "posts-post_id", params: { post_id: postId } });
 };
 </script>
@@ -66,7 +68,7 @@ const goToPost = (postId: number) => {
           :date="item.creation_at"
           :title="item.title"
           :contents="item.contents"
-          @onClickEvent="goToPost(index)"
+          @onClickEvent="goToPost(item.post_id)"
         ></Cards>
         <div v-else>
           <div class="">

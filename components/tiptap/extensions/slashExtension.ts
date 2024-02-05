@@ -185,26 +185,32 @@ const getSuggestionItems = ({ query }: { query: string }) => {
             // const toast = useToast();
 
             const file = input.files[0];
-            const formData = new FormData();
-            formData.append("file", file);
-
-            await fetch("https://gold.daialab.co.kr/v1/file/upload", {
-              method: "post",
-              body: formData,
-            })
-              .then((res) => res.json())
-              .then((data) => {
-                editor.commands.setImage({
-                  // src: URL.createObjectURL(file),
-                  src: data.data.file_url,
-                  alt: data.data.file_name,
-                  title: data.data.file_name,
-                });
-              })
-              .catch(
-                (error) => console.log(error)
-                // toast.error("파일 업로드에 실패했습니다. 다시 시도해주세요")
-              );
+            // const formData = new FormData();
+            // formData.append("file", file);
+            console.log(file)
+            editor.commands.setImage({
+                    src: URL.createObjectURL(file),
+                    // src: data.data.file_url,
+                    alt: file.name,
+                    title: file.name,
+                  });
+            // await fetch("https://gold.daialab.co.kr/v1/file/upload", {
+            //   method: "post",
+            //   body: formData,
+            // })
+            //   .then((res) => res.json())
+            //   .then((data) => {
+            //     editor.commands.setImage({
+            //       // src: URL.createObjectURL(file),
+            //       src: data.data.file_url,
+            //       alt: data.data.file_name,
+            //       title: data.data.file_name,
+            //     });
+            //   })
+            //   .catch(
+            //     (error) => console.log(error)
+            //     // toast.error("파일 업로드에 실패했습니다. 다시 시도해주세요")
+            //   );
             // startImageUpload(file, editor.view, pos);
           }
         };

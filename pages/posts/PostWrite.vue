@@ -15,13 +15,11 @@ const postData = ref<{
 });
 
 const writePost = async () => {
-  console.log(editorRef.value.getJSON().content);
   const data = await useApi(`POST`,'/posts/write',
   {
     ...postData.value
-    ,contents:JSON.stringify(editorRef.value.getJSON().content)
+    ,contents:JSON.stringify(editorRef.value.getJSON())
   });
-console.log(data)
 	// const result = await $fetch("/api/posts/write", {
   //     method:'POST',   
   //     body:{

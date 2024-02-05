@@ -99,7 +99,6 @@ const props = defineProps({
     default: true,
   },
 });
-
 const extensions = ref([...defaultExtensions]);
 
 if (!props.resize) {
@@ -111,6 +110,7 @@ console.log(props.defaultValue);
 const computedContent = computed(() =>
   props.content ? props.content : props.defaultValue
 );
+console.log(computedContent)
 const computedEditable = computed(() => props.editable);
 // const content = ref(defaultEditorContent);
 // const debouncedUpdate = useDebounceFn(({ editor }) => {

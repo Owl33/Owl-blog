@@ -1,23 +1,41 @@
 <script setup lang="ts">
+import { nextTick } from 'vue'
 import { useRoute } from "vue-router";
 const route = useRoute();
+const editorRef = ref();
+interface res {
+  data:{  
+    post_id:number;
+    category: string;
+    title: string;
+    contents: string | any;
+    creation_at: string;
+  }
+}
+
+const {data,pending,error} = await getApi<res>(`/posts/${route.params.post_id}`)
+
+const contents = computed(() => data.value ? JSON.parse(data.value.data.contents) : {});
+
 </script>
 <template>
   <section>
     <!-- <h1>{{ route.params.post_id }}</h1> -->
-    <div>
+    <div v-if="data">
       <article>
         <p class="text-sm text-slate-700">개발</p>
         <h1 class="my-4 text-4xl font-bold text-slate-700">
-          [Project] #2 에러를 소통해보자
+          {{data.data.title}}
         </h1>
-        <p class="text-sm text-slate-700">2023-03-21</p>
+        <p class="text-sm text-slate-700">{{ data.data.creation_at }}</p>
       </article>
       <article class="mt-10">
-        <NuxtImg
-          class="rounded-xl aspect-video w-full"
-          :src="`https://source.unsplash.com/random/1920×1080`"
-        />
+        <Tiptap
+        :content="contents"
+        :resize="false"
+      ref="editorRef"
+      :editable="false"
+    />
       </article>
     </div>
   </section>
