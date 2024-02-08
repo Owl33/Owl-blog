@@ -185,32 +185,33 @@ const getSuggestionItems = ({ query }: { query: string }) => {
             // const toast = useToast();
 
             const file = input.files[0];
-            // const formData = new FormData();
-            // formData.append("file", file);
-            console.log(file)
-            editor.commands.setImage({
-                    src: URL.createObjectURL(file),
-                    // src: data.data.file_url,
-                    alt: file.name,
-                    title: file.name,
-                  });
-            // await fetch("https://gold.daialab.co.kr/v1/file/upload", {
-            //   method: "post",
-            //   body: formData,
-            // })
-            //   .then((res) => res.json())
-            //   .then((data) => {
-            //     editor.commands.setImage({
-            //       // src: URL.createObjectURL(file),
-            //       src: data.data.file_url,
-            //       alt: data.data.file_name,
-            //       title: data.data.file_name,
-            //     });
-            //   })
-            //   .catch(
-            //     (error) => console.log(error)
-            //     // toast.error("파일 업로드에 실패했습니다. 다시 시도해주세요")
-            //   );
+            const formData = new FormData();
+            formData.append("file", file);
+            console.log(file);
+            // editor.commands.setImage({
+            //         src: URL.createObjectURL(file),
+            //         // src: data.data.file_url,
+            //         alt: file.name,
+            //         title: file.name,
+            //       });
+            await fetch("https://back-owlblog.vercel.app/v1/aws/upload", {
+              method: "post",
+              body: formData,
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                console.log(data);
+                editor.commands.setImage({
+                  // src: URL.createObjectURL(file),
+                  src: data.data.url,
+                  alt: data.data.name,
+                  title: data.data.name,
+                });
+              })
+              .catch(
+                (error) => console.log(error)
+                // toast.error("파일 업로드에 실패했습니다. 다시 시도해주세요")
+              );
             // startImageUpload(file, editor.view, pos);
           }
         };
@@ -285,7 +286,7 @@ const renderItems = () => {
       return component?.ref?.onKeyDown(props.event);
     },
     onExit: () => {
-      popup?.[0].destroy();
+      // popup?.[0].destroy();
       component?.destroy();
     },
   };
