@@ -8,8 +8,8 @@ interface responseObj {
   timestamp: string;
 }
 export default async <Type>(method: string, url: string, params?: any) => {
-  // const baseURL = "https://back-owlblog.vercel.app/v1";
-  const baseURL = "http://127.0.1:3000/v1";
+  const baseURL = "https://back-owlblog.vercel.app/v1";
+  // const baseURL = "http://127.0.1:3000/v1";
   const uiStore = useUIStore();
 
   uiStore.startLoading();
@@ -24,6 +24,7 @@ export default async <Type>(method: string, url: string, params?: any) => {
           ? "DELETE"
           : undefined,
       body: params,
+      credentials: "include",
     });
     uiStore.finishLoading();
     return res;
