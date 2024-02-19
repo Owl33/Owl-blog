@@ -4,8 +4,6 @@ export default <Type>(url: string, params?: any) => {
 
   return useAsyncData<Type>(url, () =>
     $fetch(baseURL + url, {
-      credentials: "include",
-
       params,
       onRequest({ request, response, options }) {},
       onResponse({ request, response, options }) {},
