@@ -1,12 +1,15 @@
 <script setup lang="ts">
+import { useUserStore } from "../store/useUserStore";
+const userStore = useUserStore();
+
 const nuxtApp = useNuxtApp();
-const loading = ref(false);
-nuxtApp.hook("page:start", () => {
-  loading.value = true;
-});
-nuxtApp.hook("page:finish", () => {
-  loading.value = false;
-});
+// const loading = ref(false);
+// nuxtApp.hook("page:start", () => {
+//   loading.value = true;
+// });
+// nuxtApp.hook("page:finish", () => {
+//   loading.value = false;
+// });
 
 </script>
 <template>
@@ -18,9 +21,8 @@ nuxtApp.hook("page:finish", () => {
       </div>
 
     </div>
-    <MenuButton></MenuButton>
+    <MenuButton v-if="userStore.accessToken"></MenuButton>
   </div>
 </template>
 
-<style>
-</style>
+<style></style>

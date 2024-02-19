@@ -1,5 +1,5 @@
 import { useUIStore } from "../store/useUIStore";
-
+import { useUserStore } from "~/store/useUserStore";
 interface responseObj {
   data: any;
   statusCode: number;
@@ -9,12 +9,21 @@ interface responseObj {
 }
 export default async <Type>(method: string, url: string, params?: any) => {
   const baseURL = "https://back-owlblog.vercel.app/v1";
-  // const baseURL = "http://127.0.1:3000/v1";
+  // const baseURL = "http://localhost:8080/v1";
   const uiStore = useUIStore();
+  const userStore = useUserStore();
 
+  // if (!accessToken) {
+  //   await userStore.refresh();
+  // }
   uiStore.startLoading();
   try {
     const res: responseObj = await $fetch(baseURL + url, {
+      headers: {
+        Authorization: userStore.accessToken
+          ? `Bearer ${userStore.accessToken}`
+          : "",
+      },
       method:
         method.toUpperCase() == "POST"
           ? "POST"

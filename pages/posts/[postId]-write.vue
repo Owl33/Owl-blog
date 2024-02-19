@@ -25,6 +25,7 @@ const postData = reactive<{
   category: "개발",
 });
 
+
 if (route.params.postId && route.params.postId !== 'new') {
   const { data, pending, error } = await getApi<res>(`/posts/${route.params.postId}`)
   if (data.value) {
