@@ -1,6 +1,14 @@
 <script setup lang="ts">
+import { useUserStore } from "./store/useUserStore";
+import { onMounted } from "vue";
+const userStore = useUserStore();
 
+onMounted(async () => {
 
+  if (!userStore.accessToken) {
+    await userStore.refresh();
+  }
+})
 </script>
 <template>
   <div>

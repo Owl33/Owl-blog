@@ -2,9 +2,12 @@
 import { nextTick } from 'vue'
 
 import { useRouter } from "vue-router";
+import { useUserStore } from '~/store/useUserStore';
 const router = useRouter();
 const email = ref("")
 const password = ref("");
+const userStore = useUserStore();
+const refreshToken = useCookie('refreshToken')
 
 const login = async () => {
   const data = await useApi(`POST`, '/auth/login', {
@@ -12,10 +15,11 @@ const login = async () => {
     password: password.value
   });
   if (data.statusCode == 200) {
-    // router.push({ name: "posts-list" });
+    userStore.accessToken = data.data.accessToken
 
+    router.push({ name: "posts-list" });
+    // refreshToken.value = data.data.refreshToken
   }
-  console.log(data)
 
 }
 // const refresh = async () => {
