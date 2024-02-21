@@ -9,6 +9,7 @@ interface res {
     postId: number;
     category: string;
     title: string;
+    description?: string;
     contents: string | any;
     creation_at: string;
   }

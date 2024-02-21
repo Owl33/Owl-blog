@@ -8,36 +8,61 @@ interface res {
     postId: number;
     category: string;
     title: string;
+    description: string;
     contents: string;
     creation_at: string;
   }[]
 }
-
+const categorys = ref({});
 
 // const {data,pending,refresh,error} = useAsyncData<res>('ra',()=>$fetch('https://back-owlblog.vercel.app/posts'))
 const { data, pending, refresh, error, status } = await getApi<res>('/posts');
+const originData = data.value?.data;
+const posts = ref(data.value?.data);
 const test = () => {
   refresh()
   console.log(data.value);
 
 }
+if (data.value) {
+  categorys.value = data.value.data.reduce((acc: any, post) => {
+    let category = post.category;
 
+    if (acc[category]) {
+      acc[category]++;
+    } else {
+      acc[category] = 1;
+    }
+    return acc;
+  }, {});
+}
 
 
 const goToPost = (postId: any) => {
-  // console.log(item)
   router.push({ name: "posts-postId", params: { postId: postId } });
 };
+
+const onClickCategory = (category: string) => {
+  if (category == '전체') {
+    posts.value = originData
+  } else {
+
+    posts.value = originData?.filter((post) => post.category == category)
+  }
+}
 </script>
 <template>
   <section>
     <article>
       <div class="flex justify-between items-center">
-        <div>
-          <span>개발 (3)</span>
-          <span class="mx-4">일상 (2)</span>
+        <div class="hover:cursor-pointer">
+          <span @click="onClickCategory('전체')">전체</span>
+
+          <span @click="onClickCategory(category)" class="ml-4" v-for="(number, category) in categorys">
+            {{ `${category} (${number})` }}
+          </span>
         </div>
-        <div class="w-72">
+        <!-- <div class="w-72">
           <div class="relative w-full min-w-[200px] h-10">
             <input
               class="peer w-full h-full bg-transparent text-blue-gray-700 outline outline-1 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-blue-gray-200 focus:border-gray-900"
@@ -46,7 +71,7 @@ const goToPost = (postId: any) => {
               입력해주세요
             </label>
           </div>
-        </div>
+        </div> -->
       </div>
     </article>
     <article>
@@ -56,9 +81,10 @@ const goToPost = (postId: any) => {
         ></Spiner> -->
 
         <div v-if="pending">loading</div>
-        <Cards v-if="data && data.data && data.data.length > 0 && !pending" v-for="(item, index) in data.data"
+        <Cards v-if="posts && posts.length > 0 && !pending" v-for="( item, index ) in  posts "
           :image="`https://source.unsplash.com/random/192${index}×1080`" :category="item.category"
-          :date="item.creation_at" :title="item.title" :contents="item.contents" @onClickEvent="goToPost(item.postId)">
+          :description="item.description" :date="item.creation_at" :title="item.title" :contents="item.contents"
+          @onClickEvent="goToPost(item.postId)">
         </Cards>
         <div v-else>
           <div class="">

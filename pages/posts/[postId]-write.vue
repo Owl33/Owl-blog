@@ -18,10 +18,12 @@ interface res {
 const postData = reactive<{
   title: string;
   contents: any;
+  description: string;
   category: string;
 }>({
   title: '',
   contents: undefined,
+  description: '',
   category: "개발",
 });
 
@@ -40,6 +42,7 @@ if (route.params.postId && route.params.postId !== 'new') {
 
 
 const onSavePost = async () => {
+  postData.description = editorRef.value.getText().replace(/\r?\n/g, ' ').slice(0, 200)
   if (route.params.postId == 'new') {
 
     const data = await useApi(`POST`, '/posts/save',
@@ -48,11 +51,12 @@ const onSavePost = async () => {
         , contents: JSON.stringify(editorRef.value.getJSON())
       });
 
-    if (data.statusCode == 201) {
+    if (data.statusCode == 200) {
       console.log('success!')
       router.push({ name: 'posts-list' })
     }
   } else {
+
     const data = await useApi(`PUT`, `/posts/save/${route.params.postId}`,
       {
         ...postData
