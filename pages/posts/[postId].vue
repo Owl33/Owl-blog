@@ -1,21 +1,13 @@
 <script setup lang="ts">
-import { nextTick } from 'vue'
 import { useRoute, useRouter } from "vue-router";
+import { type Posts } from '../../types/posts/posts'
+
 const route = useRoute();
 const router = useRouter();
 const editorRef = ref();
-interface res {
-  data: {
-    postId: number;
-    category: string;
-    title: string;
-    description?: string;
-    contents: string | any;
-    creation_at: string;
-  }
-}
 
-const { data, pending, error, refresh } = await getApi<res>(`/posts/${route.params.postId}`)
+const { data, pending, error, refresh } = await getApi<{ data: Posts }>(`/posts/${route.params.postId}`)
+
 const contents = computed(() => data.value ? JSON.parse(data.value.data.contents) : {});
 
 if (!data.value) {

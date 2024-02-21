@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { nextTick } from 'vue'
 
 import { useRouter } from "vue-router";
 import { useUserStore } from '~/store/useUserStore';
@@ -7,7 +6,6 @@ const router = useRouter();
 const email = ref("")
 const password = ref("");
 const userStore = useUserStore();
-const refreshToken = useCookie('refreshToken')
 
 const login = async () => {
   const data = await useApi(`POST`, '/auth/login', {
@@ -18,24 +16,13 @@ const login = async () => {
     userStore.accessToken = data.data.accessToken
 
     router.push({ name: "posts-list" });
-    // refreshToken.value = data.data.refreshToken
   }
 
 }
-// const refresh = async () => {
-//   const data = await useApi(`POST`, '/auth/refresh')
-//   console.log(data)
-// }
-const goToPost = (postId: any) => {
-  // console.log(item)
 
-
-  // router.push({ name: "posts-postId", params: { postId: postId } });
-};
 </script>
 <template>
   <div class="flex ">
-
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <form class="space-y-6" action="#" method="POST" @submit.prevent="login">

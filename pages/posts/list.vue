@@ -1,22 +1,11 @@
 <script setup lang="ts">
-import { nextTick } from 'vue'
-
+import { type Posts } from '../../types/posts/posts'
 import { useRouter } from "vue-router";
 const router = useRouter();
-interface res {
-  data: {
-    postId: number;
-    category: string;
-    title: string;
-    description: string;
-    contents: string;
-    creation_at: string;
-  }[]
-}
-const categorys = ref({});
 
-// const {data,pending,refresh,error} = useAsyncData<res>('ra',()=>$fetch('https://back-owlblog.vercel.app/posts'))
-const { data, pending, refresh, error, status } = await getApi<res>('/posts');
+
+const { data, pending, refresh, error, status } = await getApi<{ data: Posts[] }>('/posts');
+const categorys = ref({});
 const originData = data.value?.data;
 const posts = ref(data.value?.data);
 const test = () => {

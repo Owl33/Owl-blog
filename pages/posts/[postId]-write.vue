@@ -1,19 +1,10 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
+import { type Posts } from '../../types/posts/posts'
 import { ref } from "vue";
 const editorRef = ref();
-const category = ref("개발");
 const router = useRouter();
 const route = useRoute();
-const config = useRuntimeConfig();
-interface res {
-  data: {
-    category: string;
-    title: string;
-    contents: string | any;
-    creation_at?: string;
-  }
-}
 
 const postData = reactive<{
   title: string;
@@ -29,20 +20,21 @@ const postData = reactive<{
 
 
 if (route.params.postId && route.params.postId !== 'new') {
-  const { data, pending, error } = await getApi<res>(`/posts/${route.params.postId}`)
+  const { data, pending, error } = await getApi<{ data: Posts }>(`/posts/${route.params.postId}`)
   if (data.value) {
-
     postData.title = data.value.data.title;
     postData.contents = data.value.data.contents;
     postData.category = data.value.data.category;
+    postData.description = data.value.data.description;
   }
-  // postData.contents = data.value.data.contents;
-  // postData.category = data.value.data.category;
+
 }
 
 
 const onSavePost = async () => {
+  //200자 제한, 줄바꿈 공백으로 치환
   postData.description = editorRef.value.getText().replace(/\r?\n/g, ' ').slice(0, 200)
+
   if (route.params.postId == 'new') {
 
     const data = await useApi(`POST`, '/posts/save',
@@ -52,7 +44,6 @@ const onSavePost = async () => {
       });
 
     if (data.statusCode == 200) {
-      console.log('success!')
       router.push({ name: 'posts-list' })
     }
   } else {
@@ -64,7 +55,6 @@ const onSavePost = async () => {
       });
 
     if (data.statusCode == 200) {
-      console.log('success!')
       router.push({ name: 'posts-list' })
     }
   }
