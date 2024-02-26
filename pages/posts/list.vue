@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type Posts } from '../../types/posts/posts'
+import { type Posts } from "~/types/posts/posts"
 import { useRouter } from "vue-router";
 const router = useRouter();
 
@@ -39,6 +39,7 @@ const onClickCategory = (category: string) => {
     posts.value = originData?.filter((post) => post.category == category)
   }
 }
+console.log()
 </script>
 <template>
   <section>
@@ -70,10 +71,8 @@ const onClickCategory = (category: string) => {
         ></Spiner> -->
 
         <div v-if="pending">loading</div>
-        <Cards v-if="posts && posts.length > 0 && !pending" v-for="( item, index ) in  posts "
-          :image="`https://source.unsplash.com/random/192${index}×1080`" :category="item.category"
-          :description="item.description" :date="item.creation_at" :title="item.title" :contents="item.contents"
-          @onClickEvent="goToPost(item.postId)">
+        <Cards v-if="posts && posts.length > 0 && !pending" v-for="( post, index ) in  posts " :post="post"
+          @onClickEvent="goToPost(post.postId)">
         </Cards>
         <div v-else>
           <div class="">

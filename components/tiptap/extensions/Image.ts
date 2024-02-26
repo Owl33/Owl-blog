@@ -86,14 +86,21 @@ const Image = Node.create<ImageOptions>({
     //2단
     return [
       "div",
-      mergeAttributes(this.options.HTMLAttributes, {
-        style: `width:${width}px; height:${height}px;`,
-        "data-image": "",
-        draggable: "false",
-      }),
+      {
+        "data-image-container": "",
+        style: "width:100%; display:flex; justify-content:center;",
+      },
       [
-        "img",
-        mergeAttributes({ src, width, height }, this.options.HTMLAttributes),
+        "div",
+        mergeAttributes(this.options.HTMLAttributes, {
+          style: `width:${width}px; height:${height}px;`,
+          "data-image": "",
+          draggable: "false",
+        }),
+        [
+          "img",
+          mergeAttributes({ src, width, height }, this.options.HTMLAttributes),
+        ],
       ],
     ];
     // 3단

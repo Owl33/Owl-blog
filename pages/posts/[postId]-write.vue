@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { type Posts } from '../../types/posts/posts'
+import { type Posts } from "~/types/posts/posts"
 import { ref } from "vue";
 const editorRef = ref();
 const router = useRouter();
