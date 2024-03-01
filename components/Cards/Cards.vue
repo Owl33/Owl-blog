@@ -9,7 +9,9 @@ const { post } = defineProps<{
 const emits = defineEmits<{
   onClickEvent: any;
 }>();
-const image = JSON.parse(post.contents).content.find((item: any) => item.type == 'image')
+// const image = JSON.parse(post.contents).content.find((item: any) => item.type == 'image')
+const image: any = post.contents
+console.log(image)
 
 </script>
 
