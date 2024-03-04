@@ -33,11 +33,9 @@ const startResize = (e: any, view: any) => {
 
   if (hoverContainer.getAttribute("data-image") !== null) {
     // newHeight = newWidth / aspectRatio;
-
     // height가 maxSize를 초과하지 않도록 함
     // newHeight = Math.min(newHeight, 300);
     mediaElement = hoverContainer.querySelector("img") as HTMLImageElement;
-
     const dx = e.clientX - initialMouseX;
 
     newWidth = Math.max(initialWidth + dx, 300);
@@ -47,7 +45,7 @@ const startResize = (e: any, view: any) => {
 
     // height를 width에 맞춰 조절
     newHeight = newWidth / aspectRatio;
-
+    console.log(newHeight);
     // height가 maxSize를 초과하지 않도록 함
     newHeight = Math.min(newHeight, maxWidth);
     //  hoverElement.style.width= `${newWidth}px`;
@@ -64,7 +62,7 @@ const startResize = (e: any, view: any) => {
     const transaction = view.state.tr.setNodeMarkup(pos, undefined, {
       ...node.attrs,
       width: newWidth,
-      height: newHeight,
+      height: "auto",
     });
     // node.attrs.width = newWidth;
     // node.attrs.height = newHeight;

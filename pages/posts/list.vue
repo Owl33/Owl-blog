@@ -65,7 +65,16 @@ console.log()
       </div>
     </article>
     <article>
-      <div class="mt-12 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 lg:gap-16 md:gap-8 sm:gap-4">
+      <div class="mt-12 
+
+      grid
+      gap-10
+       xl:grid-cols-3 
+      lg:grid-cols-2  
+      md:grid-cols-2
+      sm:grid-cols-1 
+ 
+      ">
         <!-- <Spiner
       
         ></Spiner> -->

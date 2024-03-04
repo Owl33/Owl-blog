@@ -77,13 +77,15 @@ const Image = Node.create<ImageOptions>({
 
   renderHTML({ HTMLAttributes }) {
     const { src, alt, title, width, height } = HTMLAttributes;
-
     // return [
     //   "div",
     //   { "data-image": "" },
     //   ["img", mergeAttributes(this.options.HTMLAttributes, HTMLAttributes)],
     // ];
     //2단
+    const parentNode = document
+      .querySelector(".tiptap")
+      ?.getBoundingClientRect();
     return [
       "div",
       {
@@ -93,7 +95,9 @@ const Image = Node.create<ImageOptions>({
       [
         "div",
         mergeAttributes(this.options.HTMLAttributes, {
-          style: `width:${width}px; height:${height}px;`,
+          style: `width: ${
+            parentNode?.width && parentNode?.width < width ? "100%" : width
+          }px; `,
           "data-image": "",
           draggable: "false",
         }),

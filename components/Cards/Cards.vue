@@ -20,14 +20,12 @@ console.log(image)
   hover:scale-105
   transition
   " @click.prevent="emits('onClickEvent')">
-    <NuxtImg v-if="image" fit="contain" loading="lazy" preload alt="Card Image" :src="image.attrs.src"
-      class="rounded-t-xl object-cover h-64 w-full" />
-    <div v-else class="flex justify-center items-center bg-gray-200 rounded-t-xl object-cover h-64 w-full">
-      <span class="Courgette text-3xl">
+    <NuxtImg v-if="image" fit="contain" loading="lazy" preload alt="Card Image" :src="image.attrs.src" class="rounded-t-xl object-cover w-full 
+    2xl:h-64 
+    xl:h-56 
+    md:h-[18vh]
+      sm:h-[32vh]" />
 
-        Owl33
-      </span>
-    </div>
     <div class="p-6">
       <div class="flex items-center justify-between text-sm text-slate-400">
         <p class="">{{ post.category }}</p>
