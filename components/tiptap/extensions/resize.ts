@@ -133,10 +133,7 @@ const ResizeHandle = () => {
       // resizeHandleLeft.classList.add("resize-handle", "resize-handle-left");
       resizeHandleRight = document.createElement("div");
       resizeHandleRight.classList.add("resize-handle");
-
       //   resizeHandle.draggable = true;
-      //   resizeHandle.draggable = ;
-
       // resizeHandleRight
       // resizeContainer.appendChild(handle);
       resizeHandleRight.addEventListener("mousedown", (event) =>

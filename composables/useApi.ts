@@ -7,10 +7,20 @@ interface responseObj {
   message: string;
   timestamp: string;
 }
-export default async <Type>(method: string, url: string, params?: any) => {
+type Method =
+  | "POST"
+  | "PATCH"
+  | "PUT"
+  | "DELETE"
+  | "post"
+  | "patch"
+  | "put"
+  | "delete"
+  | undefined;
+
+export default async <Type>(method: Method, url: string, params?: any) => {
   const baseURL = "https://back.owlblog.site/v1";
 
-  // const baseURL = "http://localhost:8080/v1";
   const uiStore = useUIStore();
   const userStore = useUserStore();
 
@@ -25,14 +35,7 @@ export default async <Type>(method: string, url: string, params?: any) => {
           ? `Bearer ${userStore.accessToken}`
           : "",
       },
-      method:
-        method.toUpperCase() == "POST"
-          ? "POST"
-          : method.toUpperCase() == "PUT"
-          ? "PUT"
-          : method.toUpperCase() == "DELETE"
-          ? "DELETE"
-          : undefined,
+      method: method,
       body: params,
       credentials: "include",
     });
