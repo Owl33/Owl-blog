@@ -2,8 +2,6 @@
 import { useUserStore } from "./store/useUserStore";
 import { onMounted } from "vue";
 const userStore = useUserStore();
-console.log(process)
-const config = useRuntimeConfig()
 
 
 onMounted(async () => {
