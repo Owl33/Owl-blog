@@ -6,13 +6,23 @@ const router = useRouter();
 const editorRef = ref();
 
 const { data, pending, error, refresh } = await getApi<{ data: Posts }>(`/posts/${route.params.postId}`)
-
 const contents = computed(() => data.value ? JSON.parse(data.value.data.contents) : {});
-
 if (!data.value) {
   router.push({ name: "posts-list", });
 }
-
+useHead({
+  link: [{
+    rel: 'canonical',
+    href: `https://owlblog.site/${route.fullPath}`,
+  }]
+})
+useSeoMeta({
+  title: `Owlblog - ${data.value!.data.title}`,
+  description: data.value!.data.description.replace(/\r?\n/g, ' ').slice(0, 170),
+  ogDescription: data.value!.data.description.replace(/\r?\n/g, ' ').slice(0, 170),
+  ogUrl: `https://owlblog.site/${route.fullPath}`,
+  ogImage: JSON.parse(data.value!.data.thumbnail).attrs.src,
+})
 </script>
 <template>
   <section>
@@ -29,6 +39,5 @@ if (!data.value) {
         <Tiptap :content="contents" :resize="false" ref="editorRef" :editable="false" />
       </article>
     </div>
-
   </section>
 </template>

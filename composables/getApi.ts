@@ -1,7 +1,8 @@
 import { useUserStore } from "~/store/useUserStore";
 
 export default <Type>(url: string, params?: any) => {
-  const baseURL = "https://back.owlblog.site/v1";
+  const config = useRuntimeConfig();
+  const baseURL = config.public.baseUrl;
   // const baseURL = "http://localhost:8080/v1";
   const userStore = useUserStore();
 

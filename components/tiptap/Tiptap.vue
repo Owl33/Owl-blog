@@ -68,7 +68,7 @@ const props = defineProps({
    */
   onUpdate: {
     type: Function as PropType<(editor?: EditorClass) => void | Promise<void>>,
-    default: () => {},
+    default: () => { },
   },
   /**
    * A callback function that is called whenever the editor is updated, but only after the defined debounce duration.
@@ -76,7 +76,7 @@ const props = defineProps({
    */
   onDebouncedUpdate: {
     type: Function as PropType<(editor?: EditorClass) => void | Promise<void>>,
-    default: () => {},
+    default: () => { },
   },
   /**
    * The duration (in milliseconds) to debounce the onDebouncedUpdate callback.
@@ -240,37 +240,32 @@ defineExpose({
   <!-- <v-btn @click="test">test</v-btn> -->
 
   <div @click="editor?.chain().focus().run()" :class="className">
-    <BubbleMenu
-      v-if="editor"
-      :editor="editor"
-      :animation="true"
-      :shouldShow="
-        //@ts-ignore
-        ({ editor, view, state, from, to }) => {
-          if (nodeDropHideBubble(view.dom.children)) {
-            return false;
-          } else {
-            const { doc, selection } = state;
-            const { empty } = selection;
-            const isEmptyTextBlock =
-              !doc.textBetween(from, to).length &&
-              isTextSelection(state.selection);
-            const hasEditorFocus = view.hasFocus();
+    <BubbleMenu v-if="editor" :editor="editor" :animation="true" :shouldShow="
+    //@ts-ignore
+    ({ editor, view, state, from, to }) => {
+      if (nodeDropHideBubble(view.dom.children)) {
+        return false;
+      } else {
+        const { doc, selection } = state;
+        const { empty } = selection;
+        const isEmptyTextBlock =
+          !doc.textBetween(from, to).length &&
+          isTextSelection(state.selection);
+        const hasEditorFocus = view.hasFocus();
 
-            if (
-              !hasEditorFocus ||
-              empty ||
-              isEmptyTextBlock ||
-              !editor.isEditable
-            ) {
-              return false;
-            }
-
-            return true;
-          }
+        if (
+          !hasEditorFocus ||
+          empty ||
+          isEmptyTextBlock ||
+          !editor.isEditable
+        ) {
+          return false;
         }
-      "
-    />
+
+        return true;
+      }
+    }
+    " />
     <EditorContent :editor="editor" />
   </div>
 </template>
@@ -311,12 +306,15 @@ defineExpose({
     pointer-events: none;
   }
 }
+
 .prose-lg :where(p):not(:where([class~="not-prose"] *)) {
   margin-top: 0.775em;
   margin-bottom: 0.775em;
 }
+
 .ProseMirror div[data-youtube-video] {
   transition: filter 0.1s ease-in-out;
+
   &:hover {
     cursor: pointer;
     filter: brightness(90%);
@@ -327,6 +325,7 @@ defineExpose({
     filter: brightness(90%);
   }
 }
+
 .dark-theme .drag-handle {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' style='fill: rgba(255, 255, 255, 0.5)'%3E%3Cpath d='M3,2 C2.44771525,2 2,1.55228475 2,1 C2,0.44771525 2.44771525,0 3,0 C3.55228475,0 4,0.44771525 4,1 C4,1.55228475 3.55228475,2 3,2 Z M3,6 C2.44771525,6 2,5.55228475 2,5 C2,4.44771525 2.44771525,4 3,4 C3.55228475,4 4,4.44771525 4,5 C4,5.55228475 3.55228475,6 3,6 Z M3,10 C2.44771525,10 2,9.55228475 2,9 C2,8.44771525 2.44771525,8 3,8 C3.55228475,8 4,8.44771525 4,9 C4,9.55228475 3.55228475,10 3,10 Z M7,2 C6.44771525,2 6,1.55228475 6,1 C6,0.44771525 6.44771525,0 7,0 C7.55228475,0 8,0.44771525 8,1 C8,1.55228475 7.55228475,2 7,2 Z M7,6 C6.44771525,6 6,5.55228475 6,5 C6,4.44771525 6.44771525,4 7,4 C7.55228475,4 8,4.44771525 8,5 C8,5.55228475 7.55228475,6 7,6 Z M7,10 C6.44771525,10 6,9.55228475 6,9 C6,8.44771525 6.44771525,8 7,8 C7.55228475,8 8,8.44771525 8,9 C8,9.55228475 7.55228475,10 7,10 Z'%3E%3C/path%3E%3C/svg%3E");
 }
@@ -343,28 +342,34 @@ defineExpose({
   border-radius: 16px;
 
   background-color: rgb(65, 166, 209);
+
   &.hidden-handle {
     animation: hiddenHandle 0.5s forwards;
     pointer-events: none;
   }
+
   &.active-handle {
     // opacity: 1;
     animation: showHandle 0.5s forwards;
     pointer-events: initial;
   }
 }
+
 @keyframes showHandle {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
 }
+
 @keyframes hiddenHandle {
   0% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
@@ -387,11 +392,17 @@ defineExpose({
 .ProseMirror {
   li {
     align-items: center;
+
     label {
       margin-right: 8px;
     }
   }
+
+  h2 {
+    font-size: 2rem !important;
+  }
 }
+
 div[data-image=""] {
   img {
     border-radius: 16px;
@@ -399,12 +410,14 @@ div[data-image=""] {
     height: 100%;
   }
 }
+
 div[data-youtube=""] {
   // position: relative;
   // position: relative;
   // height: 50vh;
   // padding-bottom: 56.5%;
   height: 480px;
+
   iframe {
     border-radius: 16px;
 
@@ -416,8 +429,10 @@ div[data-youtube=""] {
     // width: 100%; /* 부모에 맞게 꽉 채운다. */
     // height: 100%;
   }
+
   // padding-bottom: 56.25%;
 }
+
 :root {
   --novel-black: rgb(0 0 0);
   --novel-white: rgb(255 255 255);
@@ -474,6 +489,7 @@ div[data-youtube=""] {
   font-family: "Cal Sans";
   src: local("Cal Sans"), url(CalSans-SemiBold.otf) format("otf");
 }
+
 .tiptap p.is-editor-empty:first-child::before {
   color: #adb5bd;
   content: attr(data-placeholder);

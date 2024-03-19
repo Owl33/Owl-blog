@@ -15,6 +15,7 @@ import Highlight from "@tiptap/extension-highlight";
 import { InputRule } from "@tiptap/core";
 import SlashCommand from "./slashExtension";
 import DragAndDrop from "./dragAndDrop";
+import TextAlign from "@tiptap/extension-text-align";
 // import Iframe from "./iframe";
 import Youtube from "./youtube";
 // import ResizableMedia from "./resize/ResizableMedia";
@@ -132,6 +133,9 @@ export const defaultExtensions = [
   }),
   TiptapUnderline,
   TextStyle,
+  TextAlign.configure({
+    types: ["heading", "paragraph"],
+  }),
   Color,
   Highlight.configure({
     multicolor: true,

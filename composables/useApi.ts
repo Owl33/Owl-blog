@@ -19,8 +19,8 @@ type Method =
   | undefined;
 
 export default async <Type>(method: Method, url: string, params?: any) => {
-  const baseURL = "https://back.owlblog.site/v1";
-
+  const config = useRuntimeConfig();
+  const baseURL = config.public.baseUrl;
   const uiStore = useUIStore();
   const userStore = useUserStore();
 

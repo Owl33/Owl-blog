@@ -103,7 +103,10 @@ const Image = Node.create<ImageOptions>({
         }),
         [
           "img",
-          mergeAttributes({ src, width, height }, this.options.HTMLAttributes),
+          mergeAttributes(
+            { src, width, height, alt },
+            this.options.HTMLAttributes
+          ),
         ],
       ],
     ];

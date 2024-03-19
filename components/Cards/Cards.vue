@@ -10,8 +10,8 @@ const emits = defineEmits<{
   onClickEvent: any;
 }>();
 // const image = JSON.parse(post.contents).content.find((item: any) => item.type == 'image')
-const image: any = post.contents
-console.log(image)
+const image: any = post.thumbnail
+console.log(post)
 
 </script>
 
@@ -20,7 +20,8 @@ console.log(image)
   hover:scale-105
   transition
   " @click.prevent="emits('onClickEvent')">
-    <NuxtImg v-if="image" fit="contain" loading="lazy" preload alt="Card Image" :src="image.attrs.src" class="rounded-t-xl object-cover w-full 
+    <NuxtImg v-if="image" fit="contain" loading="lazy" preload :alt="image.attrs.alt ?? 'img alt'"
+      :src="image.attrs.src" class="rounded-t-xl object-cover w-full 
     2xl:h-64 
     xl:h-56 
     md:h-[18vh]
@@ -32,9 +33,9 @@ console.log(image)
         <p class="">{{ post.creation_at }}</p>
       </div>
 
-      <h1 class="my-3 text-2xl text-slate-700 truncate">
+      <h2 class="my-3 text-2xl font-bold text-slate-700 truncate">
         {{ post.title }}
-      </h1>
+      </h2>
       <p class="line-clamp-3 leading-6 text-sm text-gray-400">
         {{ post.description ?? '' }} </p>
     </div>

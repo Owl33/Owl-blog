@@ -10,11 +10,13 @@ const postData = reactive<{
   title: string;
   contents: any;
   description: string;
+  thumbnail: string;
   category: string;
 }>({
   title: '',
   contents: undefined,
   description: '',
+  thumbnail: '',
   category: "개발",
 });
 
@@ -34,13 +36,16 @@ if (route.params.postId && route.params.postId !== 'new') {
 const onSavePost = async () => {
   //200자 제한, 줄바꿈 공백으로 치환
   postData.description = editorRef.value.getText().replace(/\r?\n/g, ' ').slice(0, 200)
+  postData.contents = JSON.stringify(editorRef.value.getJSON())
+  postData.thumbnail = JSON.stringify(editorRef.value.getJSON().content.find(
+    (item: any) => item.type == "image"
+  ))
 
   if (route.params.postId == 'new') {
 
     const data = await useApi(`POST`, '/posts/save',
       {
         ...postData
-        , contents: JSON.stringify(editorRef.value.getJSON())
       });
 
     if (data.statusCode == 200) {
@@ -51,7 +56,6 @@ const onSavePost = async () => {
     const data = await useApi(`PUT`, `/posts/save/${route.params.postId}`,
       {
         ...postData
-        , contents: JSON.stringify(editorRef.value.getJSON())
       });
 
     if (data.statusCode == 200) {
@@ -60,6 +64,7 @@ const onSavePost = async () => {
   }
 
 };
+
 </script>
 <template>
   <div>
@@ -77,9 +82,9 @@ const onSavePost = async () => {
         id="title" autofocus type="text" placeholder="제목을 입력하세요" />
     </div>
     <Tiptap :content="!!postData?.contents ?
-      JSON.parse(postData?.contents)
-      : postData?.contents
-      " :resize="true" ref="editorRef" :editable="true" />
+        JSON.parse(postData?.contents)
+        : postData?.contents
+        " :resize="true" ref="editorRef" :editable="true" />
   </div>
 </template>
 <style lang="scss"></style>
