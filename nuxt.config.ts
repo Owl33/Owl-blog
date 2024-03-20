@@ -9,9 +9,10 @@ export default defineNuxtConfig({
   },
   robots: {
     // provide simple disallow rules for all robots `user-agent: *`
-    sitemap: "/sitemap.xml",
-    disallow: ["/login"],
-    allow: "/",
+    // sitemap: "/sitemap.xml",
+    // disallow: ["/login"],
+    // allow: "/",
+    mergeWithRobotsTxtPath: "robots.txt",
   },
   sitemap: {
     sources: ["/api/__sitemap__/urls"],
