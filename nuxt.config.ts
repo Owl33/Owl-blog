@@ -7,10 +7,20 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: "page", mode: "out-in" },
   },
-  robots: {
-    UserAgent: "*",
-    Disallow: "/login",
-  },
+  robots: [
+    {
+      UserAgent: "Googlebot",
+      Disallow: "/login",
+    },
+    {
+      UserAgent: "Yeti",
+      Disallow: "/login",
+    },
+    {
+      UserAgent: "*",
+      Disallow: "/login",
+    },
+  ],
   site: {
     url: "https://www.owlblog.site",
     sitemaps: true,
