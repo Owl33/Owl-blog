@@ -64,7 +64,6 @@ function onKeyDown(e: KeyboardEvent) {
     }
     if (e.key === "ArrowDown") {
       selectedIndex.value = (selectedIndex.value + 1) % props.items.length;
-      console.log(selectedIndex.value)
       scrollToSelected();
       return true;
     }
@@ -150,7 +149,6 @@ function scrollToSelected() {
   const container = commandListContainer.value;
   const item = container?.children[selectedIndex.value] as HTMLElement;
   if (container && item) {
-    console.log('hi')
     updateScrollView(container, item);
   }
 

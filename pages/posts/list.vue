@@ -10,7 +10,6 @@ const originData = data.value?.data;
 const posts = ref(data.value?.data);
 const refreshPosts = () => {
   refresh()
-  console.log(data.value);
 }
 if (data.value) {
   categorys.value = data.value.data.reduce((acc: any, post) => {

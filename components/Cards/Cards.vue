@@ -11,7 +11,6 @@ const emits = defineEmits<{
 }>();
 // const image = JSON.parse(post.contents).content.find((item: any) => item.type == 'image')
 const image: any = post.thumbnail
-console.log(post)
 
 </script>
 

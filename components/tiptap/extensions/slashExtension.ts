@@ -187,7 +187,6 @@ const getSuggestionItems = ({ query }: { query: string }) => {
             const file = input.files[0];
             const formData = new FormData();
             formData.append("file", file);
-            console.log(file);
             // editor.commands.setImage({
             //         src: URL.createObjectURL(file),
             //         // src: data.data.file_url,
@@ -200,7 +199,6 @@ const getSuggestionItems = ({ query }: { query: string }) => {
             })
               .then((res) => res.json())
               .then((data) => {
-                console.log(data);
                 editor.commands.setImage({
                   // src: URL.createObjectURL(file),
                   src: data.data.url,

@@ -7,8 +7,21 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: "page", mode: "out-in" },
   },
+  robots: {
+    UserAgent: "*",
+    Disallow: "/login",
+  },
   site: {
     url: "https://www.owlblog.site",
+    sitemaps: true,
+    cacheMaxAgeSeconds: 3600, // 1 hour
+
+    urls: async () => {
+      const data = await fetch("https://back.owlblog.site/v1/posts")
+        .then((res) => res.json())
+        .then((data) => data.data);
+      return data.map((post: any) => `v1/${post.postId}`);
+    },
   },
   css: ["~/assets/css/main.css"],
   postcss: {
@@ -22,7 +35,7 @@ export default defineNuxtConfig({
     // The private keys which are only available within server-side
     public: {
       baseUrl:
-        process.env.NODE_ENV == "prod"
+        process.env.NODE_ENV == "production"
           ? "https://back.owlblog.site/v1"
           : "http://localhost:8080/v1",
     },

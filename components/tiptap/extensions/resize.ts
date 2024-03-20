@@ -45,7 +45,6 @@ const startResize = (e: any, view: any) => {
 
     // height를 width에 맞춰 조절
     newHeight = newWidth / aspectRatio;
-    console.log(newHeight);
     // height가 maxSize를 초과하지 않도록 함
     newHeight = Math.min(newHeight, maxWidth);
     //  hoverElement.style.width= `${newWidth}px`;

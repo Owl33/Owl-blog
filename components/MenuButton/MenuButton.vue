@@ -11,7 +11,6 @@ const goToWrite = () => {
 const deletePost = async () => {
   // $fetch('')
   const data = await useApi(`DELETE`, `/posts/${route.params.postId}`)
-  console.log(data)
   if (data.statusCode == 200) {
     console.log('success!')
     router.push({ name: 'posts-list' })
