@@ -7,26 +7,19 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: "page", mode: "out-in" },
   },
-  robots: [
-    {
-      UserAgent: "Googlebot",
-      Disallow: "/login",
-    },
-    {
-      UserAgent: "Yeti",
-      Disallow: "/login",
-    },
-    {
-      UserAgent: "*",
-      Disallow: "/login",
-    },
-  ],
+  robots: {
+    // provide simple disallow rules for all robots `user-agent: *`
+    sitemap: "/sitemap.xml",
+    disallow: ["/login"],
+    allow: "/",
+  },
   sitemap: {
     sources: ["/api/__sitemap__/urls"],
   },
   site: {
     url: "https://www.owlblog.site",
     trailingSlash: true,
+    indexable: false,
   },
   css: ["~/assets/css/main.css"],
   postcss: {
@@ -49,7 +42,7 @@ export default defineNuxtConfig({
   modules: [
     // ...
     "@nuxt/image",
-    "@nuxtjs/robots",
+    "nuxt-simple-robots",
     "@nuxtjs/sitemap",
     "@pinia/nuxt",
   ],
