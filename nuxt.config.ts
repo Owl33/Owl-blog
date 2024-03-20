@@ -19,7 +19,7 @@ export default defineNuxtConfig({
   site: {
     url: "https://www.owlblog.site",
     trailingSlash: true,
-    indexable: false,
+    indexable: true,
   },
   css: ["~/assets/css/main.css"],
   postcss: {
