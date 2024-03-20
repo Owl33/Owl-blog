@@ -21,17 +21,12 @@ export default defineNuxtConfig({
       Disallow: "/login",
     },
   ],
+  sitemap: {
+    sources: ["/api/__sitemap__/urls"],
+  },
   site: {
     url: "https://www.owlblog.site",
-    sitemaps: true,
-    cacheMaxAgeSeconds: 3600, // 1 hour
-
-    urls: async () => {
-      const data = await fetch("https://back.owlblog.site/v1/posts")
-        .then((res) => res.json())
-        .then((data) => data.data);
-      return data.map((post: any) => `v1/${post.postId}`);
-    },
+    trailingSlash: true,
   },
   css: ["~/assets/css/main.css"],
   postcss: {
