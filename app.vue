@@ -13,7 +13,13 @@ useHead({
   link: [{
     rel: 'canonical',
     href: 'https://owlblog.site',
-  }]
+  }],
+  meta: [
+    {
+      name: "naver-site-verification",
+      content: '2f77fab011a308c514f4e1bfff6f8add26138239'
+    }
+  ]
 })
 useSeoMeta({
   title: 'Owlblog',
