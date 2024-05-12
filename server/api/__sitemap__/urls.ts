@@ -1,9 +1,7 @@
 export default defineSitemapEventHandler(async (e) => {
-  const data = await fetch("https://back.owlblog.site/v1/posts")
-    .then((res) => res.json())
-    .then((data) => data.data);
+  const posts = await $fetch("https://back.owlblog.site/v1/posts");
 
-  return data.map((post: any) => {
+  return posts.data.map((post: any) => {
     return {
       loc: `/posts/${post.postId}`,
       _sitemap: "pages",
