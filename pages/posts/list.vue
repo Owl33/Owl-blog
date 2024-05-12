@@ -4,6 +4,9 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const { data, pending, refresh, error, status } = await getApi<{ data: Posts[] }>('/posts');
+const test = await fetch("https://back.owlblog.site/v1/posts")
+
+console.log(test)
 
 const categorys = ref({});
 const originData = data.value?.data;
@@ -53,7 +56,7 @@ const onClickCategory = (category: string) => {
     <article>
       <div class="mt-12 grid gap-10 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
         <div v-if="pending">loading</div>
-        <Cards v-if="posts && posts.length > 0 && !pending" v-for="( post, index ) in  posts " :post="post"
+        <Cards v-if="posts && posts.length > 0 && !pending" v-for="( post, index ) in posts " :post="post"
           @onClickEvent="goToPost(post.postId)">
         </Cards>
         <div v-else>

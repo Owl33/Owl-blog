@@ -6,7 +6,8 @@ export default defineSitemapEventHandler(async (e) => {
   return data.map((post: any) => {
     return {
       loc: `/posts/${post.postId}`,
-      modifiedAt: new Date(post.creation_at),
+      _sitemap: "pages",
+      // modifiedAt: new Date(post.creation_at),
     };
   });
 });
