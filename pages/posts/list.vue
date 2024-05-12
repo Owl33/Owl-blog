@@ -4,9 +4,7 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const { data, pending, refresh, error, status } = await getApi<{ data: Posts[] }>('/posts');
-const test = await fetch("https://back.owlblog.site/v1/posts")
 
-console.log(test)
 
 const categorys = ref({});
 const originData = data.value?.data;
