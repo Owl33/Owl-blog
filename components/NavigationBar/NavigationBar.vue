@@ -7,6 +7,7 @@
     </div>
 
     <div>
+      <NuxtLink to="resume" target="_blank" class="ml-5 text-sm">Resume</NuxtLink>
       <!-- <NuxtLink href="/" class="text-sm">Log in </NuxtLink> -->
       <NuxtLink href="https://github.com/Owl33?tab=repositories" target="_blank" class="ml-5 text-sm">Github
       </NuxtLink>

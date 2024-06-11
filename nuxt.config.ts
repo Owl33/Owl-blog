@@ -29,6 +29,9 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  image: {
+    dir: "assets/images",
+  },
 
   runtimeConfig: {
     // The private keys which are only available within server-side
@@ -47,12 +50,12 @@ export default defineNuxtConfig({
     "@nuxtjs/sitemap",
     "@pinia/nuxt",
   ],
-  devServer: {
-    https: {
-      key: "./.cert/key.pem",
-      cert: "./.cert/cert.pem",
-    },
-  },
+  // devServer: {
+  //   https: {
+  //     key: "./.cert/key.pem",
+  //     cert: "./.cert/cert.pem",
+  //   },
+  // },
   vite: {
     server: {
       hmr: {

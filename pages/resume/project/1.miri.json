@@ -1,0 +1,38 @@
+{
+  "title": "현대 엘리베이터 MIRI SERVICE",
+  "date": "2022.10 ~ 2023-06",
+
+  "subtitle": "어드민, 영업사원, 엔지니어, 건물 관리자, 입주민 5개의 레벨로 분류하여 각 레벨마다 권한을 다르게 가지고 있고, 권한과 계약에 따라 자신에 속한 엘리베이터를 필터링한 전반적인 조회 및 관리, 신고 기능 등이 포함된 현대 엘리베이터 통합 유지관리 시스템 구축 프로젝트",
+  "task": "웹 전체 페이지 개발",
+  "skill": "Vue, Vite, Pinia",
+  "details": [
+    "윈도우 10, 1920 해상도 크롬 브라우저 기준으로한 웹 페이지 개발",
+    "Vuetify 프레임워크를 사용하여 전체적인 UI 통일",
+    "전반적인 커스텀 컴포넌트 제작",
+    "Tabulator 기반 커스텀 테이블 컴포넌트 제작",
+    "Jodit 기반 커스텀 텍스트에디터 컴포넌트 제작",
+    "레벨과 주소를 기반으로 데이터를 개인화하여 조회",
+    "카카오 지도 API로 메인 대시보드 페이지 작업",
+    "위젯 페이지 작업",
+    "관리자 페이지 작업",
+    "각각의 주소지에 존재하는 엘리베이터 부품 수명 상세 조회를 위한 트리 컴포넌트 제작",
+    "데이터를 통한 보고서 자동 생성, jsPDF를 통한 PDF 다운로드 기능",
+    "테이블 기반의 조회 페이지 엑셀 import, export 기능",
+    "다크모드 작업",
+    "I18n을 통한 현지화 작업"
+  ],
+  "more": [
+    {
+      "type": "video",
+      "src": "https://www.youtube.com/embed/4AygK96Vjic?si=xFD9r10mT45LKEKt",
+      "source": "https://www.youtube.com/watch?v=4AygK96Vjic",
+      "subtitle": "출처 Hyundai Elevatorㅣ당신의 엘리베이터에 스마트워치를 채우다!"
+    },
+    {
+      "type": "image",
+      "src": "/portfolio/miri.png",
+      "source": "https://www.hyundaielevator.co.kr/upload/catalog/%EB%AF%B8%EB%A6%AC(MIRI)%20%EC%B9%B4%ED%83%88%EB%A1%9C%EA%B7%B8.pdf",
+      "subtitle": "출처 미리 카탈로그"
+    }
+  ]
+}

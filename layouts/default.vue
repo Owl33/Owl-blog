@@ -14,7 +14,7 @@ const nuxtApp = useNuxtApp();
 </script>
 <template>
   <div>
-    <div id="heelol" class="mx-auto w-[90vw] 2xl:w-[60vw] md:w-[85vw]  ">
+    <div class="mx-auto w-[90vw] 2xl:w-[65vw] md:w-[85vw]  ">
       <NavigationBar />
       <div class="my-10">
         <slot></slot>

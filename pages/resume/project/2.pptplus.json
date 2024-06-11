@@ -1,0 +1,33 @@
+{
+  "title": "PPT PLUS PROJECT",
+  "date": "2023-09 ~ 2024-01 (중단)",
+  "subtitle": "DB와 연결하여 데이터가 변동되면 파워포인트에 바인딩 되어있는 데이터를 업데이트 하는 C++로 제작된 파워포인트 플러그인의 MVP 목적 프로젝트. 웹 페이지는 Web Office365처럼 PowerPoint에서 보이는 모습과 동일하게 랜더링, 데이터 세팅, DB 설정 및 결제를 담당함",
+  "task": "웹 페이지 전체 레이아웃 설계, 디자인 및 전체 페이지 개발",
+  "skill": "Vue, Vite, Pinia, TypeScript",
+  "details": [
+    "전체 레이아웃 설계 및 디자인",
+    "로고 디자인",
+    "Vuetify 프레임워크를 사용하여 전체적인 UI 통일",
+    "전반적인 커스텀 컴포넌트 제작",
+    "Tiptap 기반 커스텀 텍스트에디터 제작",
+    "캔버스 라이브러리인 KonvaJs로 파워포인트와 최대한 동일한 도형을 웹 페이지에서 렌더링하기 위해 추상 팩토리 패턴을 사용하여 작업",
+    "Redis의 pub/sub 기능을 이용해 Web socket으로 데이터를 받아 렌더링 된 도형의 데이터 (색상, 글씨, 차트 데이터 등) 동적으로 변경",
+    "Oauth 2.0 로그인 구현",
+    "Toss Payment 결제 연동 테스트",
+    "다크모드 작업"
+  ],
+  "more": [
+    {
+      "type": "image",
+      "src": "/portfolio/pptplus_main.jpg",
+      "source": "",
+      "subtitle": "메인 페이지 레이아웃 샘플"
+    },
+    {
+      "type": "image",
+      "src": "/portfolio/pptplus_sample.gif",
+      "source": "",
+      "subtitle": "Websocket을 사용하여 데이터 받아오는 샘플"
+    }
+  ]
+}
