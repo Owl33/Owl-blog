@@ -2,7 +2,7 @@
   <nav class="mx-auto flex h-16 items-center justify-between">
     <div class="flex">
       <NuxtLink href="/" class="">
-        <img class="h-8 w-auto" src="../../assets/images/light-logo.png" alt="" />
+        <img class="h-8 w-auto" src="../../public/images/light-logo.png" alt="" />
       </NuxtLink>
     </div>
 

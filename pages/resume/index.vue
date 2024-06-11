@@ -11,6 +11,7 @@ useSeoMeta({
   ogType: 'website',
   ogSiteName: 'OwlBlog',
 })
+console.log(projects)
 </script>
 <template>
   <section>

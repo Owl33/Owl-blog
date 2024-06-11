@@ -19,13 +19,13 @@
   "more": [
     {
       "type": "image",
-      "src": "/portfolio/pptplus_main.jpg",
+      "src": "/images/portfolio/pptplus_main.jpg",
       "source": "",
       "subtitle": "메인 페이지 레이아웃 샘플"
     },
     {
       "type": "image",
-      "src": "/portfolio/pptplus_sample.gif",
+      "src": "/images/portfolio/pptplus_sample.gif",
       "source": "",
       "subtitle": "Websocket을 사용하여 데이터 받아오는 샘플"
     }

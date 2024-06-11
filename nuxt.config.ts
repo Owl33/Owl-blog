@@ -29,9 +29,11 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  image: {
-    dir: "assets/images",
-  },
+  ignore: ["**/resume/project/**"],
+
+  // image: {
+  //   dir: "assets/images",
+  // },
 
   runtimeConfig: {
     // The private keys which are only available within server-side
