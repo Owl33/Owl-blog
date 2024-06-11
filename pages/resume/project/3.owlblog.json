@@ -2,7 +2,7 @@
   "title": "OwlBlog",
   "date": "2023-02 ~",
   "subtitle": "개인 블로그 구축 목표",
-  "task": "NuxtJs를 통한 SSR 페이지 구축, AWS EC2로 DB서버 배포, Vercel로 웹페이지 배포",
+  "task": "NuxtJs를 통한 SSR 웹페이지 구축, NestJs로 백엔드 구축 및 AWS EC2로 DB서버 배포, AWS S3로 이미지 서버 구축, Vercel로 프론트와 백엔드 배포",
   "skill": "NuxtJs, NestJs, Pinia, TypeScript",
   "details": [
     "NuxtJs를 통한 SSR 웹페이지 구축",

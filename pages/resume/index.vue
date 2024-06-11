@@ -6,12 +6,7 @@ useSeoMeta({
   ogTitle: '박건민 기술 이력서',
   description: '박건민의 기술 이력서 입니다.',
   ogDescription: '박건민의 기술 이력서 입니다.',
-  ogUrl: 'https://owlblog.site',
-  ogImage: 'https://s3.ap-northeast-2.amazonaws.com/owl--server-bucket/Owlblog.png',
-  ogType: 'website',
-  ogSiteName: 'OwlBlog',
 })
-console.log(projects)
 </script>
 <template>
   <section>
@@ -21,11 +16,18 @@ console.log(projects)
         <p class="text-gray-500">ahsxkc@gmail.com</p>
       </div>
       <div class="mt-4 text-xl">
-        <p>안녕하세요, 박건민 입니다.</p>
-        <p>기술은 Vue와 TypeScript를 주로 사용하고 있습니다.</p>
-        <p>저는 UI의 통일성과 반복적인 코딩을 최소화하는 것을 중요하게 생각합니다. 컴포넌트화 위주로 코딩하는 편입니다.</p>
-        <p>혹여 누군가가 제가 작성한 코드를 볼 때 부끄럽지 않고, 누군가에게 결과물을 보여주며 '내가 이걸 만들었다'라고 자랑스럽게 말할 수 있는 개발자가 되고 싶습니다.
-        <p>좋은 개발자가 될 수 있도록 노력하겠습니다.</p>
+        <p>
+
+          안녕하세요, 박건민 입니다.
+        </p>
+        <p>
+          저는 Vue와 TypeScript를 주로 사용하는 프론트엔드 개발자입니다.
+        </p>
+        <p>
+          UI의 통일성을 유지하고 반복적인 코딩을 최소화하는 것을 중요하게 생각하며, 효율적이고 재사용 가능한 컴포넌트를 만드는 것을 즐깁니다.
+        </p>
+        <p>
+          제가 작성한 코드가 다른 이들에게 부끄럽지 않게, 그리고 자랑스럽게 '내가 이걸 만들었다'라고 말할 수 있는 개발자가 되기 위해 항상 노력하고 있습니다.
         </p>
       </div>
     </article>
