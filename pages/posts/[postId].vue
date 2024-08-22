@@ -1,28 +1,33 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from "vue-router";
 import { type Posts } from "~/types/posts/posts";
+import Tiptap from "~/components/tiptap/Tiptap.vue";
 const route = useRoute();
 const router = useRouter();
 const editorRef = ref();
 
-const { data, pending, error, refresh } = await getApi<{ data: Posts }>(`/posts/${route.params.postId}`)
-const contents = computed(() => data.value ? JSON.parse(data.value.data.contents) : {});
+const { data, refresh, error, status, clear, execute } = await useApi.get<Posts>(
+  `/posts/${route.params.postId}`
+);
+const contents = computed(() => (data.value ? JSON.parse(data.value.data.contents) : {}));
 if (!data.value) {
-  router.push({ name: "posts-list", });
+  router.push({ name: "posts-list" });
 }
 useHead({
-  link: [{
-    rel: 'canonical',
-    href: `https://owlblog.site/${route.fullPath}`,
-  }]
-})
+  link: [
+    {
+      rel: "canonical",
+      href: `https://owlblog.site/${route.fullPath}`,
+    },
+  ],
+});
 useSeoMeta({
   title: `Owlblog - ${data.value!.data.title}`,
-  description: data.value!.data.description.replace(/\r?\n/g, ' ').slice(0, 170),
-  ogDescription: data.value!.data.description.replace(/\r?\n/g, ' ').slice(0, 170),
+  description: data.value!.data.description.replace(/\r?\n/g, " ").slice(0, 170),
+  ogDescription: data.value!.data.description.replace(/\r?\n/g, " ").slice(0, 170),
   ogUrl: `https://owlblog.site/${route.fullPath}`,
   ogImage: JSON.parse(data.value!.data.thumbnail).attrs.src,
-})
+});
 </script>
 <template>
   <section>
@@ -36,7 +41,11 @@ useSeoMeta({
         <p class="text-sm text-slate-700">{{ data.data.creation_at }}</p>
       </article>
       <article class="mt-10">
-        <Tiptap :content="contents" :resize="false" ref="editorRef" :editable="false" />
+        <Tiptap
+          :content="contents"
+          :resize="false"
+          ref="editorRef"
+          :editable="false" />
       </article>
     </div>
   </section>

@@ -1,48 +1,73 @@
-import { useUIStore } from "../store/useUIStore";
-import { useUserStore } from "~/store/useUserStore";
-interface responseObj {
-  data: any;
+import type { AsyncDataOptions, AsyncData, NuxtError, AsyncDataRequestStatus } from "nuxt/app";
+import { ref } from "vue";
+type HttpMethod =
+  | "GET"
+  | "HEAD"
+  | "PATCH"
+  | "POST"
+  | "PUT"
+  | "DELETE"
+  | "CONNECT"
+  | "OPTIONS"
+  | "TRACE";
+
+interface Response<T> {
+  data: T | any;
   statusCode: number;
   path: string;
   message: string;
   timestamp: string;
 }
-type Method =
-  | "POST"
-  | "PATCH"
-  | "PUT"
-  | "DELETE"
-  | "post"
-  | "patch"
-  | "put"
-  | "delete"
-  | undefined;
 
-export default async <Type>(method: Method, url: string, params?: any) => {
-  const config = useRuntimeConfig();
-  const baseURL = config.public.baseUrl;
-  const uiStore = useUIStore();
-  const userStore = useUserStore();
+class useApi {
+  private static instance: useApi;
 
-  // if (!accessToken) {
-  //   await userStore.refresh();
-  // }
-  uiStore.startLoading();
-  try {
-    const res: responseObj = await $fetch(baseURL + url, {
-      headers: {
-        Authorization: userStore.accessToken
-          ? `Bearer ${userStore.accessToken}`
-          : "",
-      },
-      method: method,
-      body: params,
-      credentials: "include",
-    });
-    uiStore.finishLoading();
-    return res;
-  } catch {
-    uiStore.finishLoading();
-    return { data: undefined, statusCode: 400, message: "Fail" };
+  private constructor() {}
+
+  public static createInstance() {
+    if (!useApi.instance) {
+      useApi.instance = new useApi();
+    }
+    return useApi.instance;
   }
-};
+
+  public async get<T>(
+    url: string,
+    params?: AsyncDataOptions<any>
+  ): Promise<AsyncData<Response<T>, Error>> {
+    const { $api } = useNuxtApp();
+    const response = await useAsyncData<Response<T>>(url, () => $api(url, { body: params }));
+
+    return response as AsyncData<Response<T>, Error>;
+  }
+
+  private async request<T>(
+    method: HttpMethod,
+    url: string,
+    params?: T | any
+  ): Promise<AsyncData<Response<T>, Error>> {
+    const { $api } = useNuxtApp();
+    const response = await $api<Response<T>>(url, { method: method, body: params });
+    const data = {
+      data: ref<Response<T>>(response),
+    };
+    return data as AsyncData<Response<T>, Error>;
+  }
+
+  public async post<T>(url: string, params: T | any) {
+    return await this.request<T>("POST", url, params);
+  }
+  public async put<T>(url: string, params: T | any) {
+    return await this.request<T>("PUT", url, params);
+  }
+
+  public async patch<T>(url: string, params: T | any) {
+    return await this.request<T>("PATCH", url, params);
+  }
+
+  public async delete<T>(url: string, params: T | any) {
+    return await this.request<T>("DELETE", url, params);
+  }
+}
+
+export default useApi.createInstance();
