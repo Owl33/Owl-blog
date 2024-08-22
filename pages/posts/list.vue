@@ -49,55 +49,42 @@ const onClickCategory = (category: string) => {
 </script>
 <template>
   <section class="h-full">
-    <!-- <div
-        class="flex justify-between items-center">
-        <div
-          class="hover:cursor-pointer">
+    <article
+      class="h-full"
+      v-if="posts && posts.length > 0">
+      <div class="my-12 flex justify-between items-center">
+        <div class="hover:cursor-pointer">
+          <span @click="onClickCategory('전체')">전체</span>
           <span
-            @click="
-              onClickCategory('전체')
-            "
-            >전체</span
-          >
-          <span
-            @click="
-              onClickCategory(category)
-            "
+            @click="onClickCategory(category)"
             class="ml-4"
-            v-for="(
-              number, category
-            ) in categorys">
-            {{
-              `${category} (${number})`
-            }}
+            v-for="(number, category) in categorys">
+            {{ `${category} (${number})` }}
           </span>
         </div>
-      </div> -->
+      </div>
 
-    <article class="h-full">
-      <div
-        v-if="posts && posts.length > 0"
-        class="grid gap-10 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
+      <div class="grid gap-10 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
         <Cards
           v-for="(post, index) in posts"
           :post="post"
           @onClickEvent="goToPost(post.postId)">
         </Cards>
       </div>
-      <div
-        class="h-full"
-        v-else>
-        <div>
-          loading
-          <Spiner></Spiner>
-        </div>
-        <div class="h-full flex justify-center items-center">
-          <div class="text-center">
-            <p class="mb-4">조회 된 컨텐츠가 없습니다.</p>
-            <BaseButton @click.prevent="refreshPosts"> 다시 조회하기 </BaseButton>
-          </div>
+    </article>
+    <div
+      class="h-full"
+      v-else>
+      <div>
+        loading
+        <Spiner></Spiner>
+      </div>
+      <div class="h-full flex justify-center items-center">
+        <div class="text-center">
+          <p class="mb-4">조회 된 컨텐츠가 없습니다.</p>
+          <BaseButton @click.prevent="refreshPosts"> 다시 조회하기 </BaseButton>
         </div>
       </div>
-    </article>
+    </div>
   </section>
 </template>
