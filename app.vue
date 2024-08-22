@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useUserStore } from "./store/useUserStore";
 import { onMounted } from "vue";
-import Spiner from "./components/spiner/Spiner.vue";
+import Spiner from "~/components/spiner/Spiner.vue";
 const userStore = useUserStore();
 
 onMounted(async () => {
@@ -19,21 +19,17 @@ useHead({
   meta: [
     {
       name: "naver-site-verification",
-      content:
-        "2f77fab011a308c514f4e1bfff6f8add26138239",
+      content: "2f77fab011a308c514f4e1bfff6f8add26138239",
     },
   ],
 });
 useSeoMeta({
   title: "Owlblog",
   ogTitle: "Owlblog",
-  description:
-    "박건민의 개인 개발 블로그 입니다. 개발 기록 및 취미 생활등이 올라옵니다.",
-  ogDescription:
-    "박건민의 개인 개발 블로그 입니다. 개발 기록 및 취미 생활등이 올라옵니다.",
+  description: "박건민의 개인 개발 블로그 입니다. 개발 기록 및 취미 생활등이 올라옵니다.",
+  ogDescription: "박건민의 개인 개발 블로그 입니다. 개발 기록 및 취미 생활등이 올라옵니다.",
   ogUrl: "https://owlblog.site",
-  ogImage:
-    "https://s3.ap-northeast-2.amazonaws.com/owl--server-bucket/Owlblog.png",
+  ogImage: "https://s3.ap-northeast-2.amazonaws.com/owl--server-bucket/Owlblog.png",
   ogType: "website",
   ogSiteName: "OwlBlog",
 });

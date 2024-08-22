@@ -1,5 +1,5 @@
 <template>
-  <nav class="w-full py-8 flex h-16 items-center justify-between">
+  <nav class="w-full py-12 mb-4 flex h-16 items-center justify-between">
     <div class="flex">
       <NuxtLink
         href="/"

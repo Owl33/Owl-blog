@@ -52,7 +52,7 @@ const onClickCategory = (category: string) => {
     <article
       class="h-full"
       v-if="posts && posts.length > 0">
-      <div class="my-12 flex justify-between items-center">
+      <div class="mb-8 flex justify-between items-center">
         <div class="hover:cursor-pointer">
           <span @click="onClickCategory('전체')">전체</span>
           <span
