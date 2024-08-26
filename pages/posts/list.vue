@@ -1,13 +1,23 @@
 <script setup lang="ts">
 import { type Posts } from "~/types/posts/posts";
-const router = useRouter();
+import { useRouter } from "vue-router";
+import { useUIStore } from "~/store/useUIStore";
 
+const router = useRouter();
+const uiStore = useUIStore();
 const { data, refresh, error, status, clear, execute } = await useApi.get<Posts[]>("/posts");
+
+// const { data, refresh, error, status, clear, execute } = await useApi<Posts[]>("GET", "/posts");
+// const data = await cccApi(`POST`, "/posts/save", {
+//   // ...postData,
+// });
+
+// const { data, refresh, error, status } = await getApi<{ data: Posts[] }>("/posts");
 const categorys = ref({});
 const originData = data.value?.data;
 const posts = ref(data.value?.data);
-const refreshPosts = () => {
-  refresh();
+const refreshPosts = async () => {
+  await refresh();
 };
 if (data.value) {
   categorys.value = data.value.data.reduce((acc: any, post: Posts) => {
@@ -22,7 +32,10 @@ if (data.value) {
   }, {});
 }
 const goToPost = (postId: any) => {
-  router.push({ name: "posts-postId", params: { postId: postId } });
+  router.push({
+    name: "posts-postId",
+    params: { postId: postId },
+  });
 };
 
 const onClickCategory = (category: string) => {
@@ -34,9 +47,11 @@ const onClickCategory = (category: string) => {
 };
 </script>
 <template>
-  <section>
-    <article>
-      <div class="flex justify-between items-center">
+  <section class="h-full">
+    <article
+      class="h-full"
+      v-if="posts && posts.length > 0">
+      <div class="mb-8 flex justify-between items-center">
         <div class="hover:cursor-pointer">
           <span @click="onClickCategory('전체')">전체</span>
           <span
@@ -47,22 +62,28 @@ const onClickCategory = (category: string) => {
           </span>
         </div>
       </div>
-    </article>
-    <article>
-      <div class="mt-12 grid gap-10 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
+
+      <div class="grid gap-10 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
         <Cards
-          v-if="posts && posts.length > 0"
           v-for="(post, index) in posts"
           :post="post"
           @onClickEvent="goToPost(post.postId)">
         </Cards>
-        <div v-else>
-          <div>
-            <p>게시글이 없습니다.</p>
-            <button @click.prevent="refreshPosts">다시 조회하기</button>
-          </div>
-        </div>
       </div>
     </article>
+    <div
+      class="h-full"
+      v-else>
+      <div>
+        loading
+        <Spiner></Spiner>
+      </div>
+      <div class="h-full flex justify-center items-center">
+        <div class="text-center">
+          <p class="mb-4">조회 된 컨텐츠가 없습니다.</p>
+          <BaseButton @click.prevent="refreshPosts"> 다시 조회하기 </BaseButton>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
