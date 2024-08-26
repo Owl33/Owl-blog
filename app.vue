@@ -39,12 +39,10 @@ useSeoMeta({
 });
 </script>
 <template>
-  <div>
-    <NuxtLoadingIndicator />
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </div>
+  <NuxtLoadingIndicator />
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
   <Teleport to="body">
     <Spiner></Spiner>
   </Teleport>

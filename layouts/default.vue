@@ -21,8 +21,11 @@ const nuxtApp = useNuxtApp();
         <slot></slot>
       </div>
     </div>
-    <MenuButton v-if="userStore.accessToken"></MenuButton>
   </div>
+  <MenuButton
+    v-if="
+      userStore.accessToken
+    "></MenuButton>
 </template>
 
 <style></style>

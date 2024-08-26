@@ -5,7 +5,10 @@ export default defineNuxtConfig({
   ssr: true,
 
   app: {
-    pageTransition: { name: "page", mode: "out-in" },
+    pageTransition: {
+      name: "page",
+      mode: "out-in",
+    },
   },
 
   robots: {
@@ -13,11 +16,14 @@ export default defineNuxtConfig({
     // sitemap: "/sitemap.xml",
     // disallow: ["/login"],
     // allow: "/",
-    mergeWithRobotsTxtPath: "robots.txt",
+    mergeWithRobotsTxtPath:
+      "robots.txt",
   },
+
   sitemap: {
     sources: ["/api/__sitemap__/urls"],
   },
+
   site: {
     url: "https://www.owlblog.site",
     trailingSlash: true,
@@ -40,15 +46,16 @@ export default defineNuxtConfig({
     // The private keys which are only available within server-side
     public: {
       baseUrl:
-        process.env.NODE_ENV == "production"
+        process.env.NODE_ENV ==
+        "production"
           ? "https://back.owlblog.site/v1"
           : "http://localhost:8080/v1",
     },
   },
 
   modules: [
-    // ...
     "@nuxt/image",
+    "@nuxtjs/tailwindcss",
     "nuxt-simple-robots",
     "@nuxtjs/sitemap",
     "@pinia/nuxt",
