@@ -1,17 +1,15 @@
 <script setup lang="ts">
-import { type Posts } from "~/types/posts/posts"
-import { useRouter } from "vue-router";
+import { type Posts } from "~/types/posts/posts";
 const router = useRouter();
 
-const { data, pending, refresh, error, status } = await getApi<{ data: Posts[] }>('/posts');
-
+const { data, pending, refresh, error, status } = await getApi<{ data: Posts[] }>("/posts");
 
 const categorys = ref({});
 const originData = data.value?.data;
 const posts = ref(data.value?.data);
 const refreshPosts = () => {
-  refresh()
-}
+  refresh();
+};
 if (data.value) {
   categorys.value = data.value.data.reduce((acc: any, post) => {
     let category = post.category;
@@ -29,15 +27,12 @@ const goToPost = (postId: any) => {
 };
 
 const onClickCategory = (category: string) => {
-  if (category == '전체') {
-    posts.value = originData
+  if (category == "전체") {
+    posts.value = originData;
   } else {
-
-    posts.value = originData?.filter((post) => post.category == category)
+    posts.value = originData?.filter((post) => post.category == category);
   }
-}
-
-
+};
 </script>
 <template>
   <section>
@@ -45,7 +40,10 @@ const onClickCategory = (category: string) => {
       <div class="flex justify-between items-center">
         <div class="hover:cursor-pointer">
           <span @click="onClickCategory('전체')">전체</span>
-          <span @click="onClickCategory(category)" class="ml-4" v-for="(number, category) in categorys">
+          <span
+            @click="onClickCategory(category)"
+            class="ml-4"
+            v-for="(number, category) in categorys">
             {{ `${category} (${number})` }}
           </span>
         </div>
@@ -54,7 +52,10 @@ const onClickCategory = (category: string) => {
     <article>
       <div class="mt-12 grid gap-10 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
         <div v-if="pending">loading</div>
-        <Cards v-if="posts && posts.length > 0 && !pending" v-for="( post, index ) in posts " :post="post"
+        <Cards
+          v-if="posts && posts.length > 0 && !pending"
+          v-for="(post, index) in posts"
+          :post="post"
           @onClickEvent="goToPost(post.postId)">
         </Cards>
         <div v-else>

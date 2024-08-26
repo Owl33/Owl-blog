@@ -29,6 +29,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+
   ignore: ["**/resume/project/**"],
 
   // image: {
@@ -58,11 +59,4 @@ export default defineNuxtConfig({
   //     cert: "./.cert/cert.pem",
   //   },
   // },
-  vite: {
-    server: {
-      hmr: {
-        protocol: "wss",
-      },
-    },
-  },
 });

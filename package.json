@@ -14,7 +14,7 @@
     "@nuxtjs/sitemap": "^5.1.2",
     "autoprefixer": "^10.4.17",
     "i": "^0.3.7",
-    "nuxt": "^3.10.1",
+    "nuxt": "^3.13.0",
     "nuxt-simple-robots": "^4.0.0-rc.14",
     "pnpm": "^8.15.5",
     "postcss": "^8.4.33",
