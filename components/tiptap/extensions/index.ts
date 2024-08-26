@@ -45,14 +45,12 @@ export const defaultExtensions = [
     },
     codeBlock: {
       HTMLAttributes: {
-        class:
-          "rounded-sm bg-stone-100 p-5 font-mono font-medium text-stone-800",
+        class: "rounded-sm bg-slate-900 p-5 font-mono font-medium text-white",
       },
     },
     code: {
       HTMLAttributes: {
-        class:
-          "rounded-md bg-stone-200 px-1.5 py-1 font-mono font-medium text-stone-900",
+        class: "rounded-md bg-stone-200 px-1.5 py-1 font-mono font-medium text-stone-900",
         spellcheck: "false",
       },
     },
@@ -104,7 +102,7 @@ export const defaultExtensions = [
     // allowBase64: true,
     HTMLAttributes: {
       draggable: false,
-      class: "rounded-lg border border-stone-200",
+      class: "rounded-2xl border ",
     },
   }),
   // TiptapImage.extend({

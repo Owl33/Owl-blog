@@ -2,8 +2,8 @@ const animate = require("tailwindcss-animate");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ["class"],
-  safelist: ["dark"],
+  darkMode: "class",
+  safelist: "dark",
   prefix: "",
 
   theme: {
@@ -13,6 +13,9 @@ module.exports = {
       screens: {
         "2xl": "1400px",
       },
+    },
+    fontFamily: {
+      pretendard: ["Pretendard"],
     },
     extend: {
       colors: {

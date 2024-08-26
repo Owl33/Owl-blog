@@ -16,8 +16,7 @@ export default defineNuxtConfig({
     // sitemap: "/sitemap.xml",
     // disallow: ["/login"],
     // allow: "/",
-    mergeWithRobotsTxtPath:
-      "robots.txt",
+    mergeWithRobotsTxtPath: "robots.txt",
   },
 
   sitemap: {
@@ -46,8 +45,7 @@ export default defineNuxtConfig({
     // The private keys which are only available within server-side
     public: {
       baseUrl:
-        process.env.NODE_ENV ==
-        "production"
+        process.env.NODE_ENV == "production"
           ? "https://back.owlblog.site/v1"
           : "http://localhost:8080/v1",
     },

@@ -12,17 +12,12 @@ declare module "@tiptap/core" {
       /**
        * Add an image
        */
-      setImage: (options: {
-        src: string;
-        alt?: string;
-        title?: string;
-      }) => ReturnType;
+      setImage: (options: { src: string; alt?: string; title?: string }) => ReturnType;
     };
   }
 }
 
-export const inputRegex =
-  /(?:^|\s)(!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\))$/;
+export const inputRegex = /(?:^|\s)(!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\))$/;
 
 const Image = Node.create<ImageOptions>({
   name: "image",
@@ -83,32 +78,21 @@ const Image = Node.create<ImageOptions>({
     //   ["img", mergeAttributes(this.options.HTMLAttributes, HTMLAttributes)],
     // ];
     //2단
-    const parentNode = document
-      .querySelector(".tiptap")
-      ?.getBoundingClientRect();
+    const parentNode = document.querySelector(".tiptap")?.getBoundingClientRect();
     return [
       "div",
       {
         "data-image-container": "",
-        style: "width:100%; display:flex; justify-content:center;",
+        style: "width:100%; display:flex; justify-content:center;  ",
       },
       [
         "div",
         mergeAttributes(this.options.HTMLAttributes, {
-          style: `width: ${
-            parentNode?.width && parentNode?.width < width ? "100%" : width
-          }px; `,
+          style: `width: ${parentNode?.width && parentNode?.width < width ? "100%" : width}px; `,
           "data-image": "",
           draggable: "false",
         }),
-        [
-          "img",
-          
-          mergeAttributes(
-            { src, width, height, alt },
-            this.options.HTMLAttributes
-          ),
-        ],
+        ["img", mergeAttributes({ src, width, height, alt }, this.options.HTMLAttributes)],
       ],
     ];
     // 3단

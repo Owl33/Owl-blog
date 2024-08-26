@@ -15,7 +15,7 @@ const nuxtApp = useNuxtApp();
 </script>
 <template>
   <div>
-    <div class="mx-auto 2xl:w-[40vw] lg:w-[50vw] max-lg:w-[90vw]">
+    <div class="mx-auto 2xl:w-[45vw] lg:w-[50vw] max-lg:w-[90vw]">
       <NavigationBar />
       <div class="my-10">
         <slot></slot>

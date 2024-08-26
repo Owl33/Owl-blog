@@ -13,10 +13,10 @@ useSeoMeta({
   <section>
     <article class="">
       <div>
-        <h1 class="text-4xl">박건민</h1>
-        <p class="text-gray-500">ahsxkc@gmail.com</p>
+        <h1 class="text-4xl font-bold">박건민</h1>
+        <p class="text-muted-foreground">ahsxkc@gmail.com</p>
       </div>
-      <div class="mt-4 text-xl">
+      <div class="mt-4">
         <p>안녕하세요, 박건민 입니다.</p>
         <p>저는 Vue와 TypeScript를 주로 사용하는 프론트엔드 개발자입니다.</p>
         <p>
@@ -30,22 +30,22 @@ useSeoMeta({
       </div>
     </article>
     <article class="my-16">
-      <h2 class="text-4xl text-bold">Job</h2>
-      <p class="mt-8 text-xl">다이아랩</p>
-      <p class="my-1 font-sm text-gray-400">2022-05 ~ 2024-01</p>
+      <h2 class="text-4xl font-bold">Job</h2>
+      <p class="mt-8">다이아랩</p>
+      <p class="my-1 text-sm text-foreground">2022-05 ~ 2024-01</p>
     </article>
     <article>
-      <h2 class="text-4xl text-bold">Project</h2>
+      <h2 class="text-4xl font-bold">Project</h2>
       <div
         v-for="(project, idx) in projects"
         :key="idx"
         class="mt-8 my-4">
-        <div class="xl:flex justify-between">
-          <div class="w-full xl:w-[48%]">
+        <div class="xl:flex gap-10">
+          <div class="w-full xl:w-[50%]">
             <div>
               <p class="text-2xl font-semibold">{{ project.title }}</p>
-              <p class="my-1 font-sm text-gray-400">{{ project.date }}</p>
-              <p class="text-gray-700">
+              <p class="my-2 text-sm text-foreground">{{ project.date }}</p>
+              <p class="text-muted-foreground">
                 {{ project.subtitle }}
               </p>
             </div>
@@ -58,7 +58,7 @@ useSeoMeta({
               <p class="mt-1">{{ project.skill }}</p>
             </div>
           </div>
-          <div class="w-full xl:w-[48%]">
+          <div class="w-full xl:w-[50%]">
             <div class="mt-4 xl:mt-0">
               <p class="text-xl font-bold">작업 내용</p>
               <ul class="mt-2 list-disc list-inside">
@@ -110,7 +110,7 @@ useSeoMeta({
         </div>
         <div
           v-if="projects.length - 1 !== idx"
-          class="my-16 h-1 w-full bg-gray-200"></div>
+          class="my-16 h-0.5 w-full bg-gray-100"></div>
       </div>
     </article>
   </section>

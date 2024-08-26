@@ -74,7 +74,7 @@ const onSavePost = async () => {
     <div class="my-6">
       <input
         v-model="postData.title"
-        class="write-title-input text-4xl font-bold w-full h1 py-2 text-gray-700 focus:outline-none focus:shadow-outline"
+        class="text-4xl font-bold w-full h1 py-2 text-gray-700 focus:outline-none focus:shadow-outline"
         id="title"
         autofocus
         type="text"
