@@ -7,6 +7,7 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: "page", mode: "out-in" },
   },
+
   robots: {
     // provide simple disallow rules for all robots `user-agent: *`
     // sitemap: "/sitemap.xml",
@@ -22,7 +23,6 @@ export default defineNuxtConfig({
     trailingSlash: true,
     indexable: true,
   },
-  css: ["~/assets/css/main.css"],
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -52,7 +52,20 @@ export default defineNuxtConfig({
     "nuxt-simple-robots",
     "@nuxtjs/sitemap",
     "@pinia/nuxt",
+    "@nuxtjs/tailwindcss",
+    "shadcn-nuxt",
   ],
+  shadcn: {
+    /**
+     * Prefix for all the imported component
+     */
+    prefix: "Ui",
+    /**
+     * Directory that the component lives in.
+     */
+    componentDir: "./components/ui",
+  },
+  components: [{ path: "~/components/base", prefix: "Base" }],
   // devServer: {
   //   https: {
   //     key: "./.cert/key.pem",
