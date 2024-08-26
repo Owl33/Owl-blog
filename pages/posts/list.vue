@@ -2,8 +2,7 @@
 import { type Posts } from "~/types/posts/posts";
 const router = useRouter();
 
-const { data, pending, refresh, error, status } = await getApi<{ data: Posts[] }>("/posts");
-
+const { data, refresh, error, status, clear, execute } = await useApi.get<Posts[]>("/posts");
 const categorys = ref({});
 const originData = data.value?.data;
 const posts = ref(data.value?.data);
@@ -11,7 +10,7 @@ const refreshPosts = () => {
   refresh();
 };
 if (data.value) {
-  categorys.value = data.value.data.reduce((acc: any, post) => {
+  categorys.value = data.value.data.reduce((acc: any, post: Posts) => {
     let category = post.category;
 
     if (acc[category]) {
@@ -30,7 +29,7 @@ const onClickCategory = (category: string) => {
   if (category == "전체") {
     posts.value = originData;
   } else {
-    posts.value = originData?.filter((post) => post.category == category);
+    posts.value = originData?.filter((post: Posts) => post.category == category);
   }
 };
 </script>
@@ -51,9 +50,8 @@ const onClickCategory = (category: string) => {
     </article>
     <article>
       <div class="mt-12 grid gap-10 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
-        <div v-if="pending">loading</div>
         <Cards
-          v-if="posts && posts.length > 0 && !pending"
+          v-if="posts && posts.length > 0"
           v-for="(post, index) in posts"
           :post="post"
           @onClickEvent="goToPost(post.postId)">

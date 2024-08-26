@@ -5,9 +5,10 @@ const route = useRoute();
 const router = useRouter();
 const editorRef = ref();
 
-const { data, pending, error, refresh } = await getApi<{ data: Posts }>(`/posts/${route.params.postId}`)
-const contents = computed(() => data.value ? JSON.parse(data.value.data.contents) : {});
-if (!data.value) {
+const { data, refresh, error, status, clear, execute } = await useApi.get<Posts>(
+  `/posts/${route.params.postId}`
+);
+const contents = computed(() => (data.value ? JSON.parse(data.value.data.contents) : {}));if (!data.value) {
   router.push({ name: "posts-list", });
 }
 useHead({
