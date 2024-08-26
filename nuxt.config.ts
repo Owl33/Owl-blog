@@ -54,7 +54,11 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxtjs/tailwindcss",
     "shadcn-nuxt",
+    "@nuxtjs/color-mode",
   ],
+  colorMode: {
+    classSuffix: "",
+  },
   shadcn: {
     /**
      * Prefix for all the imported component

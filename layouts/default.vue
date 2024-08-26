@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { useUserStore } from "../store/useUserStore";
+import NavigationBar from "~/components/navigationBar/NavigationBar.vue";
+import MenuButton from "~/components/menuButton/MenuButton.vue";
 const userStore = useUserStore();
 
 const nuxtApp = useNuxtApp();
@@ -10,16 +12,14 @@ const nuxtApp = useNuxtApp();
 // nuxtApp.hook("page:finish", () => {
 //   loading.value = false;
 // });
-
 </script>
 <template>
   <div>
-    <div class="mx-auto w-[90vw] 2xl:w-[65vw] md:w-[85vw]  ">
+    <div class="mx-auto 2xl:w-[40vw] lg:w-[50vw] max-lg:w-[90vw]">
       <NavigationBar />
       <div class="my-10">
         <slot></slot>
       </div>
-
     </div>
     <MenuButton v-if="userStore.accessToken"></MenuButton>
   </div>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { type Posts } from "~/types/posts/posts";
+import Chips from "~/components/chips/Chips.vue";
+import Tiptap from "~/components/tiptap/Tiptap.vue";
 const editorRef = ref();
 const router = useRouter();
 const route = useRoute();
@@ -41,7 +43,7 @@ const onSavePost = async () => {
     const { data } = await useApi.post("/posts/save", {
       ...postData,
     });
-    if (data.statusCode == 200) {
+    if (data.value.statusCode == 200) {
       router.push({ name: "posts-list" });
     }
   } else {
@@ -49,7 +51,7 @@ const onSavePost = async () => {
       ...postData,
     });
 
-    if (data.statusCode == 200) {
+    if (data.value.statusCode == 200) {
       router.push({ name: "posts-list" });
     }
   }

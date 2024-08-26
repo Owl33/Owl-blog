@@ -35,6 +35,7 @@ class useApi {
     params?: AsyncDataOptions<any>
   ): Promise<AsyncData<Response<T>, Error>> {
     const { $api } = useNuxtApp();
+    //@ts-ignore
     const response = await useAsyncData<Response<T>>(url, () => $api(url, { body: params }));
 
     return response as AsyncData<Response<T>, Error>;
@@ -46,6 +47,7 @@ class useApi {
     params?: T | any
   ): Promise<AsyncData<Response<T>, Error>> {
     const { $api } = useNuxtApp();
+    //@ts-ignore
     const response = await $api<Response<T>>(url, { method: method, body: params });
     const data = {
       data: ref<Response<T>>(response),
