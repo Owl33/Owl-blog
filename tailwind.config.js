@@ -6,12 +6,6 @@ module.exports = {
   safelist: ["dark"],
   prefix: "",
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  darkMode: ["class"],
-  safelist: ["dark"],
-  prefix: "",
-  
   theme: {
     container: {
       center: true,
