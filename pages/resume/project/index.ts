@@ -1,5 +1,6 @@
-import miri from "./1.miri.json";
+import rapeech from "./1.rapeech.json";
 import pptplus from "./2.pptplus.json";
-import owlblog from "./3.owlblog.json";
+import miri from "./3.miri.json";
+import owlblog from "./4.owlblog.json";
 
-export default [miri, pptplus, owlblog];
+export default [rapeech, pptplus, miri, owlblog];
