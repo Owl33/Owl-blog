@@ -26,7 +26,7 @@ useSeoMeta({
   description: data.value!.data.description.replace(/\r?\n/g, " ").slice(0, 170),
   ogDescription: data.value!.data.description.replace(/\r?\n/g, " ").slice(0, 170),
   ogUrl: `https://owlblog.site/${route.fullPath}`,
-  ogImage: JSON.parse(data.value!.data.thumbnail).attrs.src,
+  ogImage: JSON.parse(data.value!.data.thumbnail)?.attrs.src,
 });
 </script>
 <template>

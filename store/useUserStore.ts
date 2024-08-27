@@ -6,11 +6,11 @@ export const useUserStore = defineStore("user", () => {
   const refresh = async () => {
     const expiredDate = new Date(useCookie<string>("expired").value);
     const currentDate = new Date();
-
     if (currentDate < expiredDate) {
-      const data = await useApi("POST", "/auth/refresh");
-      if (data.statusCode == 200) {
-        accessToken.value = data.data;
+      const { data } = await useApi.post("/auth/refresh");
+      console.log(data);
+      if (data.value.statusCode == 200) {
+        accessToken.value = data.value.data;
       } else {
         refreshToken.value = undefined;
       }

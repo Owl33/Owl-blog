@@ -8,13 +8,11 @@ export default defineNuxtPlugin((nuxtApp) => {
   const api = $fetch.create({
     baseURL: baseURL,
     onRequest({ request, options, error }) {
-      const headers = (options.headers ||= {});
-      if (Array.isArray(headers)) {
-        headers.push(["Authorization", `Bearer ${userStore.accessToken}`]);
-      } else if (headers instanceof Headers) {
-        headers.set("Authorization", `Bearer ${userStore.accessToken}`);
-      } else {
-        headers.Authorization = `Bearer ${userStore.accessToken}`;
+      if (options.method && options.method.toUpperCase() !== "GET") {
+        options.headers = {
+          ...options.headers,
+          Authorization: `Bearer ${userStore.accessToken}`,
+        };
       }
     },
     onResponse({ request, response, options }) {

@@ -32,30 +32,30 @@ class useApi {
 
   public async get<T>(
     url: string,
-    params?: AsyncDataOptions<any>
-  ): Promise<AsyncData<Response<T>, Error>> {
+    params?: any
+  ): Promise<AsyncData<Response<T> | null, NuxtError<unknown> | null>> {
     const { $api } = useNuxtApp();
     //@ts-ignore
     const response = await useAsyncData<Response<T>>(url, () => $api(url, { body: params }));
 
-    return response as AsyncData<Response<T>, Error>;
+    return response;
   }
 
   private async request<T>(
     method: HttpMethod,
     url: string,
     params?: T | any
-  ): Promise<AsyncData<Response<T>, Error>> {
+  ): Promise<AsyncData<Response<T>, NuxtError<unknown> | null>> {
     const { $api } = useNuxtApp();
     //@ts-ignore
     const response = await $api<Response<T>>(url, { method: method, body: params });
     const data = {
       data: ref<Response<T>>(response),
     };
-    return data as AsyncData<Response<T>, Error>;
+    return data as AsyncData<Response<T>, NuxtError<unknown> | null>;
   }
 
-  public async post<T>(url: string, params: T | any) {
+  public async post<T>(url: string, params?: T | any) {
     return await this.request<T>("POST", url, params);
   }
   public async put<T>(url: string, params: T | any) {
@@ -66,7 +66,7 @@ class useApi {
     return await this.request<T>("PATCH", url, params);
   }
 
-  public async delete<T>(url: string, params: T | any) {
+  public async delete<T>(url: string, params?: T | any) {
     return await this.request<T>("DELETE", url, params);
   }
 }
