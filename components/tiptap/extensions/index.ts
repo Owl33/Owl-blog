@@ -8,7 +8,6 @@ import { Color } from "@tiptap/extension-color";
 import TaskItem from "@tiptap/extension-task-item";
 import TiptapImage from "./Image";
 import Document from "@tiptap/extension-document";
-
 import TaskList from "@tiptap/extension-task-list";
 import { Markdown } from "tiptap-markdown";
 import Highlight from "@tiptap/extension-highlight";
@@ -16,11 +15,28 @@ import { InputRule } from "@tiptap/core";
 import SlashCommand from "./slashExtension";
 import DragAndDrop from "./dragAndDrop";
 import TextAlign from "@tiptap/extension-text-align";
+import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
+import { all, common, createLowlight } from "lowlight";
+
 // import Iframe from "./iframe";
 import Youtube from "./youtube";
 // import ResizableMedia from "./resize/ResizableMedia";
 import BubbleMenu from "@tiptap/extension-bubble-menu";
 import resize from "./resize";
+const lowlight = createLowlight(all);
+import css from "highlight.js/lib/languages/css";
+import js from "highlight.js/lib/languages/javascript";
+import ts from "highlight.js/lib/languages/typescript";
+import html from "highlight.js/lib/languages/xml";
+import java from "highlight.js/lib/languages/java";
+import node from "highlight.js/lib/languages/node-repl";
+// you can also register languages
+lowlight.register("html", html);
+lowlight.register("css", css);
+lowlight.register("js", js);
+lowlight.register("ts", ts);
+lowlight.register("ts", java);
+
 export const defaultExtensions = [
   StarterKit.configure({
     bulletList: {
@@ -43,11 +59,12 @@ export const defaultExtensions = [
         class: "border-l-4 border-stone-700",
       },
     },
-    codeBlock: {
-      HTMLAttributes: {
-        class: "rounded-sm bg-slate-900 p-5 font-mono font-medium text-white",
-      },
-    },
+    // codeBlock: {
+    //   HTMLAttributes: {
+    //     class: "rounded-sm bg-slate-900 p-5 font-mono font-medium text-white",
+    //   },
+    // },
+    codeBlock: false,
     code: {
       HTMLAttributes: {
         class: "rounded-md bg-stone-200 px-1.5 py-1 font-mono font-medium text-stone-900",
@@ -87,6 +104,9 @@ export const defaultExtensions = [
     HTMLAttributes: {
       class: "mt-4 mb-6 border-t border-stone-300",
     },
+  }),
+  CodeBlockLowlight.configure({
+    lowlight: lowlight,
   }),
   // ResizableMedia,
   TiptapLink.configure({

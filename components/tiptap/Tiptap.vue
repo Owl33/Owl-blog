@@ -1,11 +1,6 @@
 <script setup lang="ts">
 import { watchEffect, ref, watch, type PropType, computed } from "vue";
-import {
-  useEditor,
-  EditorContent,
-  type JSONContent,
-  Extension,
-} from "@tiptap/vue-3";
+import { useEditor, EditorContent, type JSONContent, Extension } from "@tiptap/vue-3";
 import { type EditorProps } from "@tiptap/pm/view";
 import { Editor as EditorClass, isTextSelection } from "@tiptap/core";
 
@@ -68,7 +63,7 @@ const props = defineProps({
    */
   onUpdate: {
     type: Function as PropType<(editor?: EditorClass) => void | Promise<void>>,
-    default: () => { },
+    default: () => {},
   },
   /**
    * A callback function that is called whenever the editor is updated, but only after the defined debounce duration.
@@ -76,7 +71,7 @@ const props = defineProps({
    */
   onDebouncedUpdate: {
     type: Function as PropType<(editor?: EditorClass) => void | Promise<void>>,
-    default: () => { },
+    default: () => {},
   },
   /**
    * The duration (in milliseconds) to debounce the onDebouncedUpdate callback.
@@ -102,13 +97,9 @@ const props = defineProps({
 const extensions = ref([...defaultExtensions]);
 
 if (!props.resize) {
-  extensions.value = extensions.value.filter(
-    (extension) => extension.name != "resize"
-  );
+  extensions.value = extensions.value.filter((extension) => extension.name != "resize");
 }
-const computedContent = computed(() =>
-  props.content ? props.content : props.defaultValue
-);
+const computedContent = computed(() => (props.content ? props.content : props.defaultValue));
 const computedEditable = computed(() => props.editable);
 // const content = ref(defaultEditorContent);
 // const debouncedUpdate = useDebounceFn(({ editor }) => {
@@ -239,33 +230,33 @@ defineExpose({
 <template>
   <!-- <v-btn @click="test">test</v-btn> -->
 
-  <div @click="editor?.chain().focus().run()" :class="className">
-    <BubbleMenu v-if="editor" :editor="editor" :animation="true" :shouldShow="
-    //@ts-ignore
-    ({ editor, view, state, from, to }) => {
-      if (nodeDropHideBubble(view.dom.children)) {
-        return false;
-      } else {
-        const { doc, selection } = state;
-        const { empty } = selection;
-        const isEmptyTextBlock =
-          !doc.textBetween(from, to).length &&
-          isTextSelection(state.selection);
-        const hasEditorFocus = view.hasFocus();
+  <div
+    @click="editor?.chain().focus().run()"
+    :class="className">
+    <BubbleMenu
+      v-if="editor"
+      :editor="editor"
+      :animation="true"
+      :shouldShow="
+        //@ts-ignore
+        ({ editor, view, state, from, to }) => {
+          if (nodeDropHideBubble(view.dom.children)) {
+            return false;
+          } else {
+            const { doc, selection } = state;
+            const { empty } = selection;
+            const isEmptyTextBlock =
+              !doc.textBetween(from, to).length && isTextSelection(state.selection);
+            const hasEditorFocus = view.hasFocus();
 
-        if (
-          !hasEditorFocus ||
-          empty ||
-          isEmptyTextBlock ||
-          !editor.isEditable
-        ) {
-          return false;
+            if (!hasEditorFocus || empty || isEmptyTextBlock || !editor.isEditable) {
+              return false;
+            }
+
+            return true;
+          }
         }
-
-        return true;
-      }
-    }
-    " />
+      " />
     <EditorContent :editor="editor" />
   </div>
 </template>
@@ -485,10 +476,10 @@ div[data-youtube=""] {
   --novel-highlight-gray: #3a3a3a;
 }
 
-@font-face {
-  font-family: "Cal Sans";
-  src: local("Cal Sans"), url(CalSans-SemiBold.otf) format("otf");
-}
+// @font-face {
+//   font-family: "Cal Sans";
+//   src: local("Cal Sans"), url(CalSans-SemiBold.otf) format("otf");
+// }
 
 .tiptap p.is-editor-empty:first-child::before {
   color: #adb5bd;
@@ -496,5 +487,73 @@ div[data-youtube=""] {
   float: left;
   height: 0;
   pointer-events: none;
+}
+
+.tiptap pre {
+  background: #0d0d0d;
+  color: #fff;
+  // font-family: 'JetBrainsMono', monospace;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+
+  code {
+    color: inherit;
+    padding: 0;
+    background: none;
+    font-size: 0.8rem;
+  }
+
+  .hljs-comment,
+  .hljs-quote {
+    color: #616161;
+  }
+
+  .hljs-variable,
+  .hljs-template-variable,
+  .hljs-attribute,
+  .hljs-tag,
+  .hljs-name,
+  .hljs-regexp,
+  .hljs-link,
+  .hljs-name,
+  .hljs-selector-id,
+  .hljs-selector-class {
+    color: #f98181;
+  }
+
+  .hljs-number,
+  .hljs-meta,
+  .hljs-built_in,
+  .hljs-builtin-name,
+  .hljs-literal,
+  .hljs-type,
+  .hljs-params {
+    color: #fbbc88;
+  }
+
+  .hljs-string,
+  .hljs-symbol,
+  .hljs-bullet {
+    color: #b9f18d;
+  }
+
+  .hljs-title,
+  .hljs-section {
+    color: #faf594;
+  }
+
+  .hljs-keyword,
+  .hljs-attr,
+  .hljs-selector-tag {
+    color: #70cff8;
+  }
+
+  .hljs-emphasis {
+    font-style: italic;
+  }
+
+  .hljs-strong {
+    font-weight: 700;
+  }
 }
 </style>
