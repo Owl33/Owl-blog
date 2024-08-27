@@ -117,7 +117,7 @@ const editor = useEditor({
   },
   editable: computedEditable.value == false ? false : true,
   content: computedContent.value,
-  onUpdate: (e) => {
+  // onUpdate: (e) => {
     // const selection = e.editor.state.selection;
     // const lastTwo = getPrevText(e.editor, {
     //   chars: 2,
@@ -137,7 +137,7 @@ const editor = useEditor({
     //   props.onUpdate(e.editor);
     // debouncedUpdate(e);
     // }
-  },
+  // },
   // autofocus: "start",
 });
 // const { complete, completion, isLoading, stop } = useCompletion({

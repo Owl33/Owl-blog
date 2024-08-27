@@ -16,26 +16,25 @@ import SlashCommand from "./slashExtension";
 import DragAndDrop from "./dragAndDrop";
 import TextAlign from "@tiptap/extension-text-align";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
-import { all, common, createLowlight } from "lowlight";
+import { all, createLowlight } from "lowlight";
 
 // import Iframe from "./iframe";
 import Youtube from "./youtube";
 // import ResizableMedia from "./resize/ResizableMedia";
 import BubbleMenu from "@tiptap/extension-bubble-menu";
 import resize from "./resize";
-const lowlight = createLowlight(all);
 import css from "highlight.js/lib/languages/css";
 import js from "highlight.js/lib/languages/javascript";
 import ts from "highlight.js/lib/languages/typescript";
 import html from "highlight.js/lib/languages/xml";
 import java from "highlight.js/lib/languages/java";
-import node from "highlight.js/lib/languages/node-repl";
 // you can also register languages
+const lowlight = createLowlight(all);
 lowlight.register("html", html);
 lowlight.register("css", css);
 lowlight.register("js", js);
 lowlight.register("ts", ts);
-lowlight.register("ts", java);
+lowlight.register("java", java);
 
 export const defaultExtensions = [
   StarterKit.configure({
