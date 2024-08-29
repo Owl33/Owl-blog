@@ -102,7 +102,7 @@ const onClickCategory = (category: string) => {
     <div class="h-full flex justify-center items-center">
       <div class="text-center">
         <p class="mb-4">조회 된 컨텐츠가 없습니다.</p>
-        <BaseButton @click.prevent="refreshPosts"> 다시 조회하기 </BaseButton>
+        <UiButton @click.prevent="refreshPosts"> 다시 조회하기 </UiButton>
       </div>
     </div>
   </div>

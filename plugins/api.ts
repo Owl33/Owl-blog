@@ -7,7 +7,9 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   const api = $fetch.create({
     baseURL: baseURL,
-    onRequest({ request, options, error }) {
+    credentials: "include",
+
+    async onRequest({ request, options, error }) {
       if (options.method && options.method.toUpperCase() !== "GET") {
         options.headers = {
           ...options.headers,
@@ -15,9 +17,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         };
       }
     },
-    onResponse({ request, response, options }) {
-      // console.log("res", response);
-    },
+    async onResponse({ request, response, options }) {},
     async onResponseError({ request, options, response }) {
       if (response.status === 401) {
         await userStore.refresh(); // refresh() 함수 실행
