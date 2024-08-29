@@ -13,7 +13,8 @@ const login = async () => {
   });
   if (data.value.statusCode == 200) {
     userStore.accessToken = data.value.data.accessToken;
-
+    console.log(useCookie("refreshToken"));
+    console.log(useCookie("expired"));
     router.push({ name: "posts-list" });
   }
 };

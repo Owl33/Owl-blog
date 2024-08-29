@@ -3,6 +3,8 @@ import { defineStore } from "pinia";
 export const useUserStore = defineStore("user", () => {
   const accessToken = ref();
   const refreshToken = useCookie("refreshToken");
+  console.log(useCookie("refreshToken"))
+  console.log(useCookie("expired"))
   const refresh = async () => {
     const expiredDate = new Date(useCookie<string>("expired").value);
     const currentDate = new Date();
