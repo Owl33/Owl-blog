@@ -16,13 +16,12 @@ export default defineNuxtPlugin((nuxtApp) => {
       }
     },
     onResponse({ request, response, options }) {
-      // Process the response data
       // console.log("res", response);
     },
-    async onResponseError({ response }) {
-      // if (response.status === 401) {
-      //   await nuxtApp.runWithContext(() => navigateTo("/login"));
-      // }
+    async onResponseError({ request, options, response }) {
+      if (response.status === 401) {
+        await userStore.refresh(); // refresh() 함수 실행
+      }
     },
   });
 

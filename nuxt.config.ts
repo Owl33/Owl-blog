@@ -35,7 +35,7 @@ export default defineNuxtConfig({
     },
   },
 
-  ignore: ["**/resume/project/**"],
+  ignore: ["**/resume/project/**", "**/components/**"],
 
   // image: {
   //   dir: "assets/images",
