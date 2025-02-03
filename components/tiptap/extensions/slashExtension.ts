@@ -27,15 +27,7 @@ const Command = Extension.create({
     return {
       suggestion: {
         char: "/",
-        command: ({
-          editor,
-          range,
-          props,
-        }: {
-          editor: Editor;
-          range: Range;
-          props: any;
-        }) => {
+        command: ({ editor, range, props }: { editor: Editor; range: Range; props: any }) => {
           props.command({ editor, range });
         },
       },
@@ -70,12 +62,7 @@ const getSuggestionItems = ({ query }: { query: string }) => {
       searchTerms: ["p", "paragraph"],
       icon: Text,
       command: ({ editor, range }: CommandProps) => {
-        editor
-          .chain()
-          .focus()
-          .deleteRange(range)
-          .toggleNode("paragraph", "paragraph")
-          .run();
+        editor.chain().focus().deleteRange(range).toggleNode("paragraph", "paragraph").run();
       },
     },
     {
@@ -93,12 +80,7 @@ const getSuggestionItems = ({ query }: { query: string }) => {
       searchTerms: ["title", "big", "large"],
       icon: Heading1,
       command: ({ editor, range }: CommandProps) => {
-        editor
-          .chain()
-          .focus()
-          .deleteRange(range)
-          .setNode("heading", { level: 1 })
-          .run();
+        editor.chain().focus().deleteRange(range).setNode("heading", { level: 1 }).run();
       },
     },
     {
@@ -107,12 +89,7 @@ const getSuggestionItems = ({ query }: { query: string }) => {
       searchTerms: ["subtitle", "medium"],
       icon: Heading2,
       command: ({ editor, range }: CommandProps) => {
-        editor
-          .chain()
-          .focus()
-          .deleteRange(range)
-          .setNode("heading", { level: 2 })
-          .run();
+        editor.chain().focus().deleteRange(range).setNode("heading", { level: 2 }).run();
       },
     },
     {
@@ -121,12 +98,7 @@ const getSuggestionItems = ({ query }: { query: string }) => {
       searchTerms: ["subtitle", "small"],
       icon: Heading3,
       command: ({ editor, range }: CommandProps) => {
-        editor
-          .chain()
-          .focus()
-          .deleteRange(range)
-          .setNode("heading", { level: 3 })
-          .run();
+        editor.chain().focus().deleteRange(range).setNode("heading", { level: 3 }).run();
       },
     },
     {
@@ -193,7 +165,8 @@ const getSuggestionItems = ({ query }: { query: string }) => {
             //         alt: file.name,
             //         title: file.name,
             //       });
-            await fetch("https://back-owlblog.vercel.app/v1/aws/upload", {
+            await fetch("https://api.owlblog.org/v1/r2/upload", {
+              // await fetch("http://localhost:8080/v1/r2/upload", {
               method: "post",
               body: formData,
             })
@@ -233,8 +206,7 @@ const getSuggestionItems = ({ query }: { query: string }) => {
       return (
         item.title.toLowerCase().includes(search) ||
         item.description.toLowerCase().includes(search) ||
-        (item.searchTerms &&
-          item.searchTerms.some((term: string) => term.includes(search)))
+        (item.searchTerms && item.searchTerms.some((term: string) => term.includes(search)))
       );
     }
     return true;

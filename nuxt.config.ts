@@ -24,7 +24,7 @@ export default defineNuxtConfig({
   },
 
   site: {
-    url: "https://www.owlblog.site",
+    url: "https://www.owlblog.org",
     trailingSlash: true,
     indexable: true,
   },
@@ -46,7 +46,7 @@ export default defineNuxtConfig({
     public: {
       baseUrl:
         process.env.NODE_ENV == "production"
-          ? "https://back.owlblog.site/v1"
+          ? "https://api.owlblog.org/v1"
           : "http://localhost:8080/v1",
     },
   },

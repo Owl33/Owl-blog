@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /login
-sitemap: https://www.owlblog.site/sitemap.xml
+sitemap: https://owlblog.org/sitemap.xml

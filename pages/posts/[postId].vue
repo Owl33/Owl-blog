@@ -17,7 +17,7 @@ useHead({
   link: [
     {
       rel: "canonical",
-      href: `https://owlblog.site/${route.fullPath}`,
+      href: `https://owlblog.org/${route.fullPath}`,
     },
   ],
 });
@@ -25,7 +25,7 @@ useSeoMeta({
   title: `Owlblog - ${data.value!.data.title}`,
   description: data.value!.data.description.replace(/\r?\n/g, " ").slice(0, 170),
   ogDescription: data.value!.data.description.replace(/\r?\n/g, " ").slice(0, 170),
-  ogUrl: `https://owlblog.site/${route.fullPath}`,
+  ogUrl: `https://owlblog.org/${route.fullPath}`,
   ogImage: JSON.parse(data.value!.data.thumbnail)?.attrs.src,
 });
 </script>

@@ -1,5 +1,5 @@
 export default defineSitemapEventHandler(async (e) => {
-  const posts: any = await $fetch("https://back.owlblog.site/v1/posts");
+  const posts: any = await $fetch("https://api.owlblog.org/v1/posts");
   return posts.data.map((post: any) => {
     return {
       loc: `/posts/${post.postId}`,
