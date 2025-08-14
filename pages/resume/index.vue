@@ -18,14 +18,13 @@ useSeoMeta({
       </div>
       <div class="mt-4">
         <p>안녕하세요, 박건민 입니다.</p>
-        <p>저는 Vue와 TypeScript를 주로 사용하는 프론트엔드 개발자입니다.</p>
         <p>
           UI의 통일성을 유지하고 반복적인 코딩을 최소화하는 것을 중요하게 생각하며, 효율적이고
           재사용 가능한 컴포넌트를 만드는 것을 즐깁니다.
         </p>
         <p>
           제가 작성한 코드가 다른 이들에게 부끄럽지 않게, 그리고 자랑스럽게 '내가 이걸 만들었다'라고
-          말할 수 있는 개발자가 되기 위해 항상 노력하고 있습니다.
+          말할 수 있는 개발자가 되기 위해 항상 노력하겠습니다.
         </p>
       </div>
     </article>
@@ -44,6 +43,14 @@ useSeoMeta({
           <div class="w-full xl:w-[50%]">
             <div>
               <p class="text-2xl font-semibold">{{ project.title }}</p>
+              <p class="text-sm text-foreground">
+                <NuxtLink
+                  v-if="project.url"
+                  :href="project.url">
+                  {{ ` ${project.url}` }}
+                </NuxtLink>
+                <span v-else>-</span>
+              </p>
               <p class="my-2 text-sm text-foreground">{{ project.date }}</p>
               <p class="text-muted-foreground">
                 {{ project.subtitle }}

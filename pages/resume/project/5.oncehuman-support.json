@@ -1,5 +1,6 @@
 {
   "title": "Oncehuman Support",
+  "url": "https://oncehuman-support.vercel.app/",
   "date": "2025-08 ~",
   "subtitle": "React와 바이브 코딩의 학습 및 게임의 보조 도구를 만들기 위해 제작",
   "task": "Nextjs를 통한 SSR 구축, Shadcn/ui 기반의 커스텀 컴포넌트 제작, 게임 내 서버 전환 포인트 계산기 및 캐릭터 관리 시스템 개발, Vercel을 통한 배포",
