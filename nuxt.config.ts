@@ -28,6 +28,7 @@ export default defineNuxtConfig({
     trailingSlash: true,
     indexable: true,
   },
+
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -61,9 +62,11 @@ export default defineNuxtConfig({
     "shadcn-nuxt",
     "@nuxtjs/color-mode",
   ],
+
   colorMode: {
     classSuffix: "",
   },
+
   shadcn: {
     /**
      * Prefix for all the imported component
@@ -74,11 +77,14 @@ export default defineNuxtConfig({
      */
     componentDir: "./components/ui",
   },
-  components: [{ path: "~/components/base", prefix: "Base" }],
+
   // devServer: {
   //   https: {
   //     key: "./.cert/key.pem",
   //     cert: "./.cert/cert.pem",
   //   },
   // },
+  components: [{ path: "~/components/base", prefix: "Base" }],
+
+  compatibilityDate: "2025-08-14",
 });
