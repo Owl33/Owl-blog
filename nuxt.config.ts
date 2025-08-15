@@ -65,7 +65,6 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "nuxt-simple-robots",
     "@nuxtjs/sitemap",
-    "nuxt-schema-org",
     "@pinia/nuxt",
     "@nuxtjs/tailwindcss",
     "shadcn-nuxt",
