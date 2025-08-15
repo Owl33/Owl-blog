@@ -12,5 +12,19 @@
     "최종 목표는 Shadcn/ui 기반으로 여러 프로젝트에서 사용 가능한 커스텀 컴포넌트 라이브러리화. 그 중 현재 data-table에 많은 리소스를 들이고 있음",
     "추후 빌드 시뮬레이터 및 거래 시스템 구축 계획. 그 시점에 백엔드 및 DB 추가예정"
   ],
-  "more": []
+  "more": [
+    {
+      "type": "image",
+      "src": "/images/portfolio/oncehuman-2",
+      "source": "",
+      "subtitle": "캐릭터 등록"
+    },
+    {
+      "type": "image",
+      "src": "/images/portfolio/oncehuman-1",
+      "source": "",
+
+      "subtitle": "포인트 계산"
+    }
+  ]
 }

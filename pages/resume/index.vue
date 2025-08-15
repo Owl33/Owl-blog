@@ -100,7 +100,7 @@ useSeoMeta({
                 v-else
                 class="w-full m-auto"
                 :src="item.src"
-                alt="Miri Project" />
+                :alt="item.src" />
             </div>
             <div class="text-center mt-4 text-slate-500">
               <NuxtLink
