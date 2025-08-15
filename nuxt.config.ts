@@ -29,6 +29,14 @@ export default defineNuxtConfig({
     indexable: true,
   },
 
+  // URL 정규화와 리다이렉트 설정
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      failOnError: false,
+    },
+  },
+
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -57,6 +65,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "nuxt-simple-robots",
     "@nuxtjs/sitemap",
+    "nuxt-schema-org",
     "@pinia/nuxt",
     "@nuxtjs/tailwindcss",
     "shadcn-nuxt",

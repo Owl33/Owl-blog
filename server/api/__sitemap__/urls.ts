@@ -4,7 +4,9 @@ export default defineSitemapEventHandler(async (e) => {
     return {
       loc: `/posts/${post.postId}`,
       _sitemap: "pages",
-      // modifiedAt: new Date(post.creation_at),
+      lastmod: new Date(post.creation_at),
+      changefreq: 'weekly',
+      priority: 0.8,
     };
   });
 });

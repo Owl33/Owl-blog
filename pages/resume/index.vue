@@ -1,12 +1,25 @@
 <script setup>
 import data from "./project";
 const projects = ref(data);
-console.log(projects.value);
+
+// SEO 메타데이터 설정
+useHead({
+  link: [
+    {
+      rel: "canonical",
+      href: "https://www.owlblog.org/resume/",
+    },
+  ],
+});
+
 useSeoMeta({
-  title: "박건민 기술 이력서",
-  ogTitle: "박건민 기술 이력서",
-  description: "박건민의 기술 이력서 입니다.",
-  ogDescription: "박건민의 기술 이력서 입니다.",
+  title: "박건민 기술 이력서 - Owlblog",
+  ogTitle: "박건민 기술 이력서 - Owlblog",
+  description: "박건민의 기술 이력서입니다. 웹 개발 경력, 프로젝트 경험, 사용 기술 스택을 소개합니다.",
+  ogDescription: "박건민의 기술 이력서입니다. 웹 개발 경력, 프로젝트 경험, 사용 기술 스택을 소개합니다.",
+  ogUrl: "https://www.owlblog.org/resume/",
+  ogType: "profile",
+  twitterCard: "summary",
 });
 </script>
 <template>

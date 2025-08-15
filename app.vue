@@ -13,7 +13,7 @@ useHead({
   link: [
     {
       rel: "canonical",
-      href: "https://owlblog.org",
+      href: "https://www.owlblog.org",
     },
   ],
   meta: [
@@ -32,11 +32,26 @@ useSeoMeta({
   ogTitle: "Owlblog",
   description: "박건민의 개인 개발 블로그 입니다. 개발 기록 및 취미 생활등이 올라옵니다.",
   ogDescription: "박건민의 개인 개발 블로그 입니다. 개발 기록 및 취미 생활등이 올라옵니다.",
-  ogUrl: "https://owlblog.org",
+  ogUrl: "https://www.owlblog.org",
   ogImage: "https://s3.ap-northeast-2.amazonaws.com/owl--server-bucket/Owlblog.png",
   ogType: "website",
   ogSiteName: "OwlBlog",
+  twitterCard: "summary_large_image",
 });
+
+// 구조화된 데이터 추가 (JSON-LD)
+useSchemaOrg([
+  defineWebSite({
+    name: "OwlBlog",
+    description: "박건민의 개인 개발 블로그 입니다. 개발 기록 및 취미 생활등이 올라옵니다.",
+    url: "https://www.owlblog.org",
+  }),
+  definePerson({
+    name: "박건민",
+    url: "https://www.owlblog.org",
+    sameAs: ["https://github.com/your-github"],
+  }),
+]);
 </script>
 <template>
   <NuxtLoadingIndicator />

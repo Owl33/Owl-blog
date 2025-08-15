@@ -7,6 +7,26 @@ import { cn } from "@/lib/utils";
 const router = useRouter();
 const uiStore = useUIStore();
 
+// SEO 메타데이터 설정
+useHead({
+  link: [
+    {
+      rel: "canonical",
+      href: "https://www.owlblog.org/posts/list/",
+    },
+  ],
+});
+
+useSeoMeta({
+  title: "전체 포스트 - Owlblog",
+  description: "박건민의 개발 블로그 전체 포스트 목록입니다. 웹 개발, 프로그래밍 기술, 프로젝트 경험 등을 공유합니다.",
+  ogTitle: "전체 포스트 - Owlblog", 
+  ogDescription: "박건민의 개발 블로그 전체 포스트 목록입니다. 웹 개발, 프로그래밍 기술, 프로젝트 경험 등을 공유합니다.",
+  ogUrl: "https://www.owlblog.org/posts/list/",
+  ogType: "website",
+  twitterCard: "summary",
+});
+
 const { data, refresh, error, status, clear, execute } = await useApi.get<Posts[]>("/posts");
 
 // const { data, refresh, error, status, clear, execute } = await useApi<Posts[]>("GET", "/posts");
