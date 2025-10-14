@@ -15,8 +15,10 @@ useHead({
 useSeoMeta({
   title: "박건민 기술 이력서 - Owlblog",
   ogTitle: "박건민 기술 이력서 - Owlblog",
-  description: "박건민의 기술 이력서입니다. 웹 개발 경력, 프로젝트 경험, 사용 기술 스택을 소개합니다.",
-  ogDescription: "박건민의 기술 이력서입니다. 웹 개발 경력, 프로젝트 경험, 사용 기술 스택을 소개합니다.",
+  description:
+    "박건민의 기술 이력서입니다. 웹 개발 경력, 프로젝트 경험, 사용 기술 스택을 소개합니다.",
+  ogDescription:
+    "박건민의 기술 이력서입니다. 웹 개발 경력, 프로젝트 경험, 사용 기술 스택을 소개합니다.",
   ogUrl: "https://www.owlblog.org/resume/",
   ogType: "profile",
   twitterCard: "summary",
@@ -58,8 +60,10 @@ useSeoMeta({
               <p class="text-2xl font-semibold">{{ project.title }}</p>
               <p class="text-sm text-foreground">
                 <NuxtLink
+                  class="py-1"
                   v-if="project.url"
-                  :href="project.url">
+                  target="_blank"
+                  :to="project.url">
                   {{ ` ${project.url}` }}
                 </NuxtLink>
                 <span v-else>-</span>
@@ -93,11 +97,11 @@ useSeoMeta({
         </div>
         <div
           v-if="project.more.length > 0"
-          class="mt-12 xl:flex justify-between">
+          class="mt-12 xl:grid grid-cols-1 justify-between gap-4">
           <div
             v-for="item in project.more"
-            class="xl:w-[48%]">
-            <div class="rounded-xl overflow-auto max-h-[580px] xl:h-[285px] m-auto">
+            class="xl:w-full h-full">
+            <div class="rounded-xl overflow-auto max-h-[620px] m-auto">
               <div
                 v-if="item.type == 'video'"
                 class="w-full h-full relative">
@@ -111,7 +115,7 @@ useSeoMeta({
 
               <NuxtImg
                 v-else
-                class="w-full m-auto"
+                class="w-full m-auto rounded-xl"
                 :src="item.src"
                 :alt="item.src" />
             </div>
