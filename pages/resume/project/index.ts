@@ -4,4 +4,5 @@ import miri from "./3.miri.json";
 import owlblog from "./4.owlblog.json";
 import oncehumanSupport from "./5.oncehuman-support copy.json";
 import calendar from "./6.calendar.json";
-export default [calendar, rapeech, pptplus, miri, owlblog, oncehumanSupport];
+import aion2meter from "./7.aion2meter.json";
+export default [aion2meter, calendar, rapeech, pptplus, miri, owlblog, oncehumanSupport];
