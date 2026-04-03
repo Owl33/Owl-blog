@@ -48,7 +48,7 @@ useSeoMeta({
       <p class="mt-8">다이아랩</p>
       <p class="my-1 text-sm text-foreground">2022-05 ~ 2024-01</p>
     </article> -->
-    <article className="mt-16">
+    <article class="mt-16">
       <h2 class="text-4xl font-bold">Project</h2>
       <div
         v-for="(project, idx) in projects"
