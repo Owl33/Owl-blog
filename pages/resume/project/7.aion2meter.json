@@ -11,7 +11,7 @@
     "key를 기반으로 DOM을 재사용하며, 캐싱으로 불필요한 DOM 생성을 최소화하며, 최대 캐시값을 지정하여 캐시 값을 오래된 캐시를 삭제하는 것으로 성능 최적화를 노림",
     "자동 업데이트 시스템 구현, GitHub Releases API로 버전 비교 후 업데이트 알림 및 다운로드 진행률 UI 처리",
     "settings.propperties를 활용하여 각 유저의 설정 상태 저장 및 동기화",
-    "추후 FFLogs나 Warcraft Logs를 참고한 로그 사이트 제작 예정"
+    "현재 FFLogs나 Warcraft Logs를 참고로 하여 로그 사이트 제작을 목표로 진행 중"
   ],
   "more": [
     {
