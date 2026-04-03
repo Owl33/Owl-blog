@@ -6,10 +6,9 @@
   "task": "해당 프로젝트는 백엔드 개발자와 협업하였고, 개발 시작 당시 해당 게임의 미터기 여러개가 있었지만, 모두 돈을 받고 판매하는 상황이라 오픈소스로 만들어보자 하여 시작되었습니다.",
   "skill": "React, TypeScript, Tailwind CSS, Zustand, shadcn/ui",
   "details": [
-    "JavaFX WebView 환경 특성상 Chromium이 아닌 WebKit 기반으로 동작하여 보안 이슈를 singfle로 빌드하여 해결",
+    "JavaFX WebView 환경 특성상 Chromium이 아닌 WebKit 기반으로 동작하며, 코드 스플리팅으로 빌드를 할 시 보안 이슈가 발생하여 singfle로 빌드하여 해결",
     "폴링으로 실시간 전투 데이터를 가져오며, 데이터가 빈 값이 오거나 동일 데이터 수신 시 리렌더를 방지하여 성능 최적화",
-    "key를 기반으로 DOM을 재사용하며, 캐싱으로 불필요한 DOM 생성을 최소화하며, 최대 캐시값을 정해서 캐시 값을 계속해서 비워주는 것으로 성능 최적화를 노림",
-    "Steam API의 특성상 모든 데이터를 저장 해놔야 했기에 games, game details, game release 테이블로 나눠 games에는 모든 게임을 얕게 저장하고, details와 release 테이블은 내부적으로 계산한 인기도 40점 이상인 게임만 저장하기로 결정",
+    "key를 기반으로 DOM을 재사용하며, 캐싱으로 불필요한 DOM 생성을 최소화하며, 최대 캐시값을 지정하여 캐시 값을 오래된 캐시를 삭제하는 것으로 성능 최적화를 노림",
     "자동 업데이트 시스템 구현, GitHub Releases API로 버전 비교 후 업데이트 알림 및 다운로드 진행률 UI 처리",
     "settings.propperties를 활용하여 각 유저의 설정 상태 저장 및 동기화"
   ],

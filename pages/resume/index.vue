@@ -43,11 +43,11 @@ useSeoMeta({
         </p>
       </div>
     </article>
-    <article class="my-16">
+    <!-- <article class="my-16">
       <h2 class="text-4xl font-bold">Job</h2>
       <p class="mt-8">다이아랩</p>
       <p class="my-1 text-sm text-foreground">2022-05 ~ 2024-01</p>
-    </article>
+    </article> -->
     <article>
       <h2 class="text-4xl font-bold">Project</h2>
       <div
