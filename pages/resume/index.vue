@@ -100,7 +100,7 @@ useSeoMeta({
           class="mt-12 xl:grid grid-cols-1 justify-between gap-4">
           <div
             v-for="item in project.more"
-            class="xl:w-full h-full">
+            class="mt-4 xl:w-full h-full">
             <div class="rounded-xl overflow-auto max-h-[620px] m-auto">
               <div
                 v-if="item.type == 'video'"
