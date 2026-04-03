@@ -1,6 +1,6 @@
 {
-  "title": "릴리즈픽 (1월 이후 Steam의 보안 강화로 잠정 중단)",
-  "date": "2025.10 ~ 2025-10",
+  "title": "릴리즈픽 ",
+  "date": "2025.10 ~ 2025-10 (1월 이후 Steam의 429 보안 강화로 잠정 중단)",
   "url": "https://releasepicks.com/",
   "subtitle": "출시 예정인 게임들을 캘린더 형식으로 직관적으로 보기 쉽게 모아보고, 현재까지 출시된 게임을 모아보기 위해 제작된 캘린더 페이지",
   "task": "NextJs를 사용한 프론트엔드 구축, NestJs로 백엔드 구축, Supabase의 postgreSQl 사용",
